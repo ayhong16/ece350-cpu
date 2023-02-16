@@ -1,29 +1,26 @@
 module mult(
     output [31:0] result,
-    output resultReady,
     input [31:0] multiplicand,
     input [31:0] multiplier,
     input dataReset,
-    input clock
+    input clock,
+    input [3:0] count
 );
-
-    // manage counter
-    wire [3:0] count;
-    wire start;
-    counter16 counter(count, clock, 1'b1, dataReset);
-    assign resultReady = count[0] & count[1] & count[2] & count[3];
-    assign start = ~count[0] & ~count[1] & ~count[2] & ~count[3];
     
-    // multiplication hardware
-    wire sub, shift, controlWE;
-    wire [64:0] initialProduct, productAfterShift, productBeforeShift;
-    assign productBeforeShift [64:33] = start ? 32'b0 : productAfterShift[64:33];
-    assign productBeforeShift [32:1] = start ? multiplier : productAfterShift[32:1];
-    assign productBeforeShift [0] =  start ? 1'b0 : productAfterShift[0];
-    register65 afterShift(productAfterShift, productBeforeShift >> 2, clock, 1'b1, dataReset);
-    boothControl control(sub, shift, controlWE, productAfterShift[2:0]);
-    productSelector nextCycle(productBeforeShift, productAfterShift, multiplicand, sub, shift, controlWE);
+    wire start, resultReady;
+    assign start = ~count[0] & ~count[1] & ~count[2] & ~count[3];
 
-    assign result = resultReady ? productAfterShift[32:1] : 32'b0;
+    wire sub, shift, controlWE;
+    wire [64:0] productAfterShift, initialProduct, nextProduct, selectedProduct;
+    assign initialProduct [64:33] = 32'b0;
+    assign initialProduct [32:1] = multiplier[31:0];
+    assign initialProduct [0] = 1'b0;
+
+    assign selectedProduct = start ? initialProduct >>> 2 : nextProduct;
+    register65 afterShift(productAfterShift, selectedProduct, clock, 1'b1, dataReset);
+    boothControl control(sub, shift, controlWE, selectedProduct[2:0]);
+    productSelector nextCycle(nextProduct, productAfterShift, multiplicand, sub, shift, controlWE);
+
+    assign result = productAfterShift[32:1];
 
 endmodule

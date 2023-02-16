@@ -1,5 +1,5 @@
 module productSelector(
-    output [64:0] productBeforeShift,
+    output [64:0] nextProduct,
     input [64:0] productAfterShift,
     input [31:0] multiplicand,
     input sub,
@@ -18,6 +18,6 @@ module productSelector(
     assign fullyAdded65[64:33] = addedMultiplicand;
     assign fullyAdded65[32:0] = productAfterShift[32:0];
 
-    assign productBeforeShift = controlWE ? productAfterShift : fullyAdded65;
+    assign nextProduct = controlWE ? productAfterShift >>> 2 : fullyAdded65 >>> 2;
 
 endmodule

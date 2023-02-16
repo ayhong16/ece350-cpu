@@ -10,9 +10,25 @@ module multdiv(
     output [31:0] data_result;
     output data_exception, data_resultRDY;
 
-    wire dataReset;
-    assign dataReset = 1'b0;
-    mult multiplication(data_result, data_resultRDY, data_operandA, data_operandB, dataReset, clock);
+    // latch initial operands
+    wire [31:0] latchedMultiplicand, latchedMultiplier;
+    register32 latchedMultiplicandReg(latchedMultiplicand, data_operandA, clock, 1'b1, 1'b0);
+    register32 latchedMultiplierReg(latchedMultiplier, data_operandB, clock, 1'b1, 1'b0);
 
+    // deal with resetting data
+    wire dataReset;
+    assign dataReset = ctrl_MULT | ctrl_DIV;
+
+    // data exceptions
+    assign data_exception = 1'b0;
+    
+
+
+    // manage counter
+    wire [3:0] count;
+    counter16 counter(count, clock, 1'b1, dataReset);
+    assign data_resultRDY = count[0] & count[1] & count[2] & count[3];
+
+    mult multiplication(data_result, latchedMultiplicand, latchedMultiplier, dataReset, clock, count);
 
 endmodule
