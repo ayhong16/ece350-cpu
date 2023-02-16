@@ -1,5 +1,6 @@
 module mult(
     output [31:0] result,
+    output overflow,
     input [31:0] multiplicand,
     input [31:0] multiplier,
     input dataReset,
@@ -11,7 +12,7 @@ module mult(
     assign start = ~count[0] & ~count[1] & ~count[2] & ~count[3];
 
     wire sub, shift, controlWE;
-    wire [64:0] productAfterShift, initialProduct, nextProduct, selectedProduct;
+    wire [64:0] productAfterShift, initialProduct, nextProduct, selectedProduct, finalShiftedProduct;
     assign initialProduct [64:33] = 32'b0;
     assign initialProduct [32:1] = multiplier[31:0];
     assign initialProduct [0] = 1'b0;
@@ -21,6 +22,12 @@ module mult(
     boothControl control(sub, shift, controlWE, productAfterShift[2:0]);
     productSelector nextCycle(nextProduct, productAfterShift, multiplicand, sub, shift, controlWE);
 
-    assign result = $signed(productAfterShift[32:1]) >>> 2;
+    assign finalShiftedProduct = $signed(productAfterShift) >>> 2;
+    assign result = $signed(finalShiftedProduct[32:1]);
+
+    wire allZeros, allOnes;
+    assign allZeros = ~| finalShiftedProduct [64:33];
+    assign allOnes = & finalShiftedProduct [64:33];
+    assign overflow = (~allZeros & ~allOnes) | (allZeros & result[31]) | (allOnes & ~result[31]);
 
 endmodule
