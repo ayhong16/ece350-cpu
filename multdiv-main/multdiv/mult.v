@@ -16,11 +16,11 @@ module mult(
     assign initialProduct [32:1] = multiplier[31:0];
     assign initialProduct [0] = 1'b0;
 
-    assign selectedProduct = start ? initialProduct >>> 2 : nextProduct;
+    assign selectedProduct = start ? $signed(initialProduct) >>> 2 : nextProduct;
     register65 afterShift(productAfterShift, selectedProduct, clock, 1'b1, dataReset);
-    boothControl control(sub, shift, controlWE, selectedProduct[2:0]);
+    boothControl control(sub, shift, controlWE, productAfterShift[2:0]);
     productSelector nextCycle(nextProduct, productAfterShift, multiplicand, sub, shift, controlWE);
 
-    assign result = productAfterShift[32:1];
+    assign result = $signed(productAfterShift[32:1]) >>> 2;
 
 endmodule

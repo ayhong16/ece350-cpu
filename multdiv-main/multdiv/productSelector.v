@@ -18,6 +18,6 @@ module productSelector(
     assign fullyAdded65[64:33] = addedMultiplicand;
     assign fullyAdded65[32:0] = productAfterShift[32:0];
 
-    assign nextProduct = controlWE ? productAfterShift >>> 2 : fullyAdded65 >>> 2;
+    assign nextProduct = controlWE ? $signed(productAfterShift) >>> 2 : $signed(fullyAdded65) >>> 2;
 
 endmodule

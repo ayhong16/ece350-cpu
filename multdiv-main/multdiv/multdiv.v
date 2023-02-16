@@ -21,8 +21,6 @@ module multdiv(
 
     // data exceptions
     assign data_exception = 1'b0;
-    
-
 
     // manage counter
     wire [3:0] count;
