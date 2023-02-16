@@ -20,12 +20,15 @@ module multdiv(
     assign dataReset = ctrl_MULT | ctrl_DIV;
 
     // data exceptions
-    wire mult_overflow, zerotoNonZero, Bis0, Ais0, resultIs0;
+    wire mult_overflow, zerotoNonZero, Bis0, Ais0, resultIs0, posToNeg, negToPos, signMismatch;
     assign Bis0 = ~| latchedMultiplier;
     assign Ais0 = ~| latchedMultiplicand;
     assign resultIs0 = ~| data_result;
     assign zerotoNonZero = (Bis0 | Ais0) & ~resultIs0;
-    assign data_exception = mult_overflow || zerotoNonZero;
+    assign posToNeg = latchedMultiplicand[31] & latchedMultiplier[31] & ~data_result[31];
+    assign negToPos = ~latchedMultiplicand[31] & ~latchedMultiplier[31] & data_result[31];
+    assign signMismatch = posToNeg || negToPos;
+    assign data_exception = mult_overflow || zerotoNonZero || signMismatch;
 
     // manage counter
     wire [3:0] count;
