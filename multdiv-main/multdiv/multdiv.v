@@ -20,7 +20,7 @@ module multdiv(
     assign dataReset = ctrl_MULT | ctrl_DIV;
 
     // data exceptions
-    wire mult_overflow, zerotoNonZero;
+    wire mult_overflow, zerotoNonZero, Bis0, Ais0, resultIs0;
     assign Bis0 = ~| latchedMultiplier;
     assign Ais0 = ~| latchedMultiplicand;
     assign resultIs0 = ~| data_result;
