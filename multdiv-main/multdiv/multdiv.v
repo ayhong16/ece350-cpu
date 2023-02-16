@@ -30,7 +30,7 @@ module multdiv(
     assign signB = latchedMultiplier[31];
     assign signResult = data_result[31];
     assign signMismatch = (~signA & ~signB & signResult) | (~signA & signB & ~signResult) | (signA & ~signB & ~signResult) | (signA & signB & signResult);
-    assign data_exception = mult_overflow | zerotoNonZero | signMismatch;
+    assign data_exception = mult_overflow | zerotoNonZero | (signMismatch & ~Bis0 & ~Ais0);
 
     // manage counter
     wire [3:0] count;
