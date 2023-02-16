@@ -29,7 +29,7 @@ module multdiv(
 
     // manage counter
     wire [3:0] count;
-    counter16 counter(count, clock, 1'b1, dataReset);
+    counter16 counter(count, clock, 1'b1, dataReset | ctrl_MULT | ctrl_DIV);
     assign data_resultRDY = count[0] & count[1] & count[2] & count[3];
 
     mult multiplication(data_result, mult_overflow, latchedMultiplicand, latchedMultiplier, dataReset, clock, count);
