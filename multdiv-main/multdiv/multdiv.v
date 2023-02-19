@@ -34,6 +34,7 @@ module multdiv(
 
     // manage counter
     wire [4:0] count;
+    wire resetCounter;
     counter32 counter(count, clock, 1'b1, dataReset);
     assign data_resultRDY = multReady;
     assign resetCounter = multResetCounter;
