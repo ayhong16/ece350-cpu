@@ -17,7 +17,7 @@ module multdiv(
 
     // deal with resetting data
     wire dataReset;
-    assign dataReset = ctrl_MULT | ctrl_DIV;
+    assign dataReset = ctrl_MULT | ctrl_DIV | multResetCounter;
 
     // data exceptions
     wire mult_overflow, zerotoNonZero, Bis0, Ais0, resultIs0, signA, signB, signResult, signMismatch;
@@ -36,9 +36,9 @@ module multdiv(
     wire [4:0] count;
     counter32 counter(count, clock, 1'b1, dataReset);
     assign data_resultRDY = multReady;
+    assign resetCounter = multResetCounter;
 
     // multiplier
-    wire multReady;
-    mult multiplication(data_result, mult_overflow, multReady, latchedMultiplicand, latchedMultiplier, dataReset, clock, count);
-
+    wire multReady, multResetCounter;
+    mult multiplication(data_result, mult_overflow, multReady, multResetCounter, latchedMultiplicand, latchedMultiplier, clock, count);
 endmodule
