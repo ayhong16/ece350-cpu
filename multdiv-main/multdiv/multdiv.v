@@ -33,10 +33,12 @@ module multdiv(
     assign data_exception = mult_overflow | zerotoNonZero | (signMismatch & ~Bis0 & ~Ais0);
 
     // manage counter
-    wire [3:0] count;
-    counter16 counter(count, clock, 1'b1, dataReset);
-    assign data_resultRDY = count[0] & count[1] & count[2] & count[3];
+    wire [4:0] count;
+    counter32 counter(count, clock, 1'b1, dataReset);
+    assign data_resultRDY = multReady;
 
-    mult multiplication(data_result, mult_overflow, latchedMultiplicand, latchedMultiplier, dataReset, clock, count);
+    // multiplier
+    wire multReady;
+    mult multiplication(data_result, mult_overflow, multReady, latchedMultiplicand, latchedMultiplier, dataReset, clock, count);
 
 endmodule

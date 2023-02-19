@@ -23,7 +23,8 @@
 .\alu-main\Shifter\right_barrel_8.v 
 .\alu-main\Shifter\sll32.v 
 .\alu-main\Shifter\sra32.v 
-.\multdiv-main\memory\counter16.v 
+.\multdiv-main\memory\counter32.v 
+.\multdiv-main\memory\register1.v 
 .\multdiv-main\memory\register65.v 
 .\multdiv-main\memory\tffe_ref.v 
 .\multdiv-main\multdiv\boothControl.v 

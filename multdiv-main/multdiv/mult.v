@@ -1,15 +1,17 @@
 module mult(
     output [31:0] result,
     output overflow,
+    output resultReady,
     input [31:0] multiplicand,
     input [31:0] multiplier,
     input dataReset,
     input clock,
-    input [3:0] count
+    input [4:0] count
 );
     
-    wire start, resultReady;
-    assign start = ~count[0] & ~count[1] & ~count[2] & ~count[3];
+    wire start;
+    assign start = ~count[0] & ~count[1] & ~count[2] & ~count[3] & ~count[4];
+    assign resultReady = count[0] & count[1] & count[2] & count[3] & ~count[4];
 
     wire sub, shift, controlWE;
     wire [64:0] productAfterShift, initialProduct, unshiftedNextProduct, nextProduct, selectedProduct, finalShiftedProduct;
