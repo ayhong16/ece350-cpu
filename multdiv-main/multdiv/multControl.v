@@ -1,4 +1,4 @@
-module boothControl(
+module multControl(
     output sub,
     output shift,
     output controlWE,

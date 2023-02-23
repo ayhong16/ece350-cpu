@@ -25,12 +25,16 @@
 .\alu-main\Shifter\sra32.v 
 .\multdiv-main\memory\counter32.v 
 .\multdiv-main\memory\register1.v 
+.\multdiv-main\memory\register64.v 
 .\multdiv-main\memory\register65.v 
 .\multdiv-main\memory\tffe_ref.v 
-.\multdiv-main\multdiv\boothControl.v 
+.\multdiv-main\multdiv\div.v 
+.\multdiv-main\multdiv\divControl.v 
 .\multdiv-main\multdiv\mult.v 
+.\multdiv-main\multdiv\multControl.v 
 .\multdiv-main\multdiv\multdiv.v 
 .\multdiv-main\multdiv\productSelector.v 
+.\multdiv-main\multdiv\twosComp32.v 
 .\regfile-main\Logic\buffer32.v 
 .\regfile-main\Logic\decoder32.v 
 .\regfile-main\regfile\dffe_ref.v 
