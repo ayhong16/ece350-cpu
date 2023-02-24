@@ -12,8 +12,8 @@ module div(
     assign resetCounter = count[0] & ~count[1] & ~count[2] & ~count[3] & ~count[4] & count[5];
 
     wire dividendSign, divisorSign;
-    register1 latchedDividendSign(dividendSign, dividend[31], clock, start, resetCounter);
-    register1 latchedDivisorSign(divisorSign, divisor[31], clock, start, resetCounter);
+    register1 latchedDividendSign(dividendSign, dividend[31], ~clock, start, resetCounter);
+    register1 latchedDivisorSign(divisorSign, divisor[31], ~clock, start, resetCounter);
 
     // Flip dividend and divisor if negative
     wire [31:0] chosenDividend, chosenDivisor, twosDividend, twosDivisor;
@@ -35,7 +35,7 @@ module div(
     wire [63:0] finalSignCheck;
     wire [31:0] AplusM;
     assign finalSignCheck[31:0] = nextAQ[31:0];
-    cla_adder adder(AplusM, overflow, shiftedAQ[63:32], divisor, 1'b0);
+    cla_adder adder(AplusM, overflow, shiftedAQ[63:32], chosenDivisor, 1'b0);
     assign finalSignCheck[63:32] = nextAQ[63] ? AplusM : nextAQ[63:32];
 
     // Make quotient and remainder negative if necessary
