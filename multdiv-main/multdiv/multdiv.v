@@ -18,12 +18,12 @@ module multdiv(
     // deal with resetting data
     wire dataReset, latchedMultOperation, latchedDivOperation;
     assign dataReset = ctrl_MULT | ctrl_DIV | resetCounter;
-    register1 latchedMultOperationReg(latchedMultOperation, ctrl_MULT, clock, ctrl_DIV | ctrl_MULT, multResetCounter);
-    register1 latchedDivOperationReg(latchedDivOperation, ctrl_DIV, clock, ctrl_DIV | ctrl_MULT, multResetCounter);
+    register1 latchedMultOperationReg(latchedMultOperation, ctrl_MULT, clock, ctrl_DIV | ctrl_MULT, resetCounter);
+    register1 latchedDivOperationReg(latchedDivOperation, ctrl_DIV, clock, ctrl_DIV | ctrl_MULT, resetCounter);
 
 
     // data exceptions
-    wire mult_overflow, div_overflow, zerotoNonZero, Bis0, Ais0, resultIs0, signA, signB, signResult, multSignMismatch, multDataException, divDataException;
+    wire mult_overflow, zerotoNonZero, Bis0, Ais0, resultIs0, signA, signB, signResult, multSignMismatch, multDataException, divDataException;
     assign Bis0 = ~| latchedMultiplierDivisor;
     assign Ais0 = ~| latchedMultiplicandDividend;
     assign resultIs0 = ~| data_result;
@@ -34,7 +34,7 @@ module multdiv(
     assign signResult = data_result[31];
     assign multSignMismatch = (~signA & ~signB & signResult) | (~signA & signB & ~signResult) | (signA & ~signB & ~signResult) | (signA & signB & signResult);
     assign multDataException = mult_overflow | zerotoNonZero | (multSignMismatch & ~Bis0 & ~Ais0);
-    assign divDataException = div_overflow | Bis0;
+    assign divDataException = Bis0;
     assign data_exception = (multDataException & latchedMultOperation) | (divDataException & latchedDivOperation);
 
     // manage counter
@@ -46,9 +46,10 @@ module multdiv(
 
     // multiplier and divider
     wire multReady, multResetCounter, divReady, divResetCounter;
-    wire [31:0] multResult, divResult;
+    wire [31:0] multResult, divResult, nonZeroDivisorResult;
     mult multiplication(multResult, mult_overflow, multReady, multResetCounter, latchedMultiplicandDividend, latchedMultiplierDivisor, clock, count);
-    div division(divResult, div_overflow, divReady, divResetCounter, latchedMultiplicandDividend, latchedMultiplierDivisor, clock, count);
+    div division(nonZeroDivisorResult, divReady, divResetCounter, latchedMultiplicandDividend, latchedMultiplierDivisor, clock, count);
+    assign divResult = Bis0 ? 32'b0 : nonZeroDivisorResult;
 
     assign data_result = latchedMultOperation ? multResult : divResult;
 endmodule

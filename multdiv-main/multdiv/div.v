@@ -1,6 +1,5 @@
 module div(
     output[31:0] result,
-    output overflow,
     output resultReady,
     output resetCounter,
     input [31:0] dividend,
@@ -18,12 +17,11 @@ module div(
 
     // Flip dividend and divisor if negative
     wire [31:0] chosenDividend, chosenDivisor, twosDividend, twosDivisor;
-    wire dividendOverflow, divisorOverflow;
+    wire dividendOverflow, divisorOverflow, overflow;
     twosComp32 initialtwosDividendMod(twosDividend, dividendOverflow, dividend);
     twosComp32 initialtwosDivisorMod(twosDivisor, divisorOverflow, divisor);
     assign chosenDividend = dividendSign ? twosDividend : dividend;
     assign chosenDivisor = divisorSign ? twosDivisor : divisor;
-    assign overflow = (dividendOverflow & dividendSign) | (divisorOverflow & divisorSign) | unaryOverflow;
 
     wire [63:0] initialAQ, shiftedAQ, nextAQ, selectedAQ;
     assign initialAQ [63:32] = 32'b0;
@@ -33,11 +31,18 @@ module div(
     register64 afterShift(shiftedAQ, selectedAQ, clock, 1'b1, resetCounter);
     divControl control(nextAQ, shiftedAQ, chosenDivisor);
 
+    // Final A sign check
+    wire [63:0] finalSignCheck;
+    wire [31:0] AplusM;
+    assign finalSignCheck[31:0] = nextAQ[31:0];
+    cla_adder adder(AplusM, overflow, shiftedAQ[63:32], divisor, 1'b0);
+    assign finalSignCheck[63:32] = nextAQ[63] ? AplusM : nextAQ[63:32];
+
     // Make quotient and remainder negative if necessary
     wire [31:0] intermediateResult;
     wire isPositive, unaryOverflow;
     assign isPositive = (~dividendSign & ~divisorSign) | (dividendSign & divisorSign);
-    twosComp32 twosResultMod(intermediateResult, unaryOverflow, nextAQ[31:0]);
-    assign result = isPositive ? nextAQ[31:0] : intermediateResult;
+    twosComp32 twosResultMod(intermediateResult, unaryOverflow, finalSignCheck[31:0]);
+    assign result = isPositive ? finalSignCheck[31:0] : intermediateResult;
 
 endmodule
