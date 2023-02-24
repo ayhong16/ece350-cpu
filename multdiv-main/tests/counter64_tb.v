@@ -1,8 +1,8 @@
-module counter32_tb;
-    wire [4:0] out;
+module counter64_tb;
+    wire [5:0] out;
     reg clk, T, clr;
 
-    counter32 counter(out, clk, T, clr);
+    counter64 counter(out, clk, T, clr);
     
     initial begin
         clk = 0;
@@ -16,7 +16,7 @@ module counter32_tb;
     always @(clk) begin
         #1
         $display("Clock: %b, T: %b, Clear: %b => Count: %d", clk, T, clr, out);
-        if (out == 15) begin
+        if (out == 63) begin
             $display("Finished");
             $finish;
         end

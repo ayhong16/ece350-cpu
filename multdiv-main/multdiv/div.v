@@ -38,6 +38,6 @@ module div(
     wire isPositive, unaryOverflow;
     assign isPositive = (~dividendSign & ~divisorSign) | (dividendSign & divisorSign);
     twosComp32 twosResultMod(intermediateResult, unaryOverflow, nextAQ[31:0]);
-    assign result = isPositive ? intermediateResult : nextAQ[31:0];
+    assign result = isPositive ? nextAQ[31:0] : intermediateResult;
 
 endmodule
