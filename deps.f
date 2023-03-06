@@ -35,6 +35,10 @@
 .\multdiv-main\multdiv\multdiv.v 
 .\multdiv-main\multdiv\productSelector.v 
 .\multdiv-main\multdiv\twosComp32.v 
+.\processor-main\processor\processor.v 
+.\processor-main\processor\RAM.v 
+.\processor-main\processor\ROM.v 
+.\processor-main\processor\Wrapper.v 
 .\regfile-main\Logic\buffer32.v 
 .\regfile-main\Logic\decoder32.v 
 .\regfile-main\regfile\dffe_ref.v 
