@@ -20,7 +20,7 @@
 module processor(
     // Control signals
     clock,                          // I: The master clock
-    reset,                          // I: A reset signal
+    latchReset,                          // I: A latchReset signal
 
     // Imem
     address_imem,                   // O: The address of the data to get from imem
@@ -44,7 +44,7 @@ module processor(
 	);
 
 	// Control signals
-	input clock, reset;
+	input clock, latchReset;
 	
 	// Imem
     output [31:0] address_imem;
@@ -61,8 +61,35 @@ module processor(
 	output [31:0] data_writeReg;
 	input [31:0] data_readRegA, data_readRegB;
 
-	/* YOUR CODE STARTS HERE */
-	
-	/* END CODE */
+    wire latchWrite;
+    assign latchWrite = 1'b1; // TODO: fill in logic for writing latched data
+
+    // Fetch stage
+    wire [31:0] fetch_PC_out
+	fetch fetch_stage(address_imem, fetch_PC_out, 32'b0, latchReset, clock, latchWrite, 1'b0); // TODO: implement PCafterJump and jump ctrl
+
+    // FD Latch
+    wire [31:0] FD_PCout, FD_InstOut;
+    register32 FD_PCreg(.out(FD_PCout), .data(fetch_PC_out), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
+    register32 FD_InstReg(.out(FD_InstOut), .data(q_imem), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
+
+    // DX Latch
+    wire [31:0] DX_PCin, DX_PCout, DX_Ain, DX_Aout, DX_Bin, DX_Bout, DX_InstIn, DX_InstOut;
+    register32 DX_PCreg(.out(DX_PCout), .data(DX_PCin), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
+    register32 DX_Areg(.out(DX_Aout), .data(DX_Ain), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
+    register32 DX_Breg(.out(DX_Bout), .data(DX_Bin), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
+    register32 DX_InstReg(.out(DX_InstOut), .data(DX_InstIn), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
+
+    // XM Latch
+    wire [31:0] XM_Oin, XM_Oout, XM_Bin, XM_Bout, XM_InstIn, XM_InstOut;
+    register32 XM_Oreg(.out(XM_Oout), .data(XM_Oin), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
+    register32 XM_Breg(.out(XM_Bout), .data(XM_Bin), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
+    register32 XM_InstReg(.out(XM_InstOut), .data(XM_InstIn), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
+
+    // MW Latch
+    wire [31:0] MW_Oin, MW_Oout, MW_Din, MW_Dout, MW_InstIn, MW_InstOut;
+    register32 MW_Oreg(.out(MW_Oout), .data(MW_Oin), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
+    register32 MW_Dreg(.out(MW_Dout), .data(MW_Din), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
+    register32 MW_InstReg(.out(MW_InstOut), .data(MW_InstIn), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
 
 endmodule
