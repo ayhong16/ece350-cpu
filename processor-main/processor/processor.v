@@ -66,7 +66,7 @@ module processor(
 
     // Fetch stage
     wire [31:0] fetch_PC_out;
-	fetchControl fetch_stage(address_imem, fetch_PC_out, 32'b0, reset, ~clock, latchWrite, 1'b0); // TODO: implement PCafterJump and jump ctrl
+	fetchControl fetch_stage(address_imem, fetch_PC_out, 32'b0, reset, ~clock, latchWrite); // TODO: implement PCafterJump and jump ctrl
 
     // FD Latch
     wire [31:0] FD_PCout, FD_InstOut;

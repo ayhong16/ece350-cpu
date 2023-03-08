@@ -1,8 +1,9 @@
 module fetchControl(
     output[31:0] insn_mem, PCplus1,
     input[31:0] PCafterJump,
-    input reset, clock, wre, ctr_jump
+    input reset, clock, wre
 );
+    wire ctrl_jump;
     assign ctrl_jump = 0; // TODO: implement jump
 
     wire [31:0] PCafterAdd, PCout, PCnext;
