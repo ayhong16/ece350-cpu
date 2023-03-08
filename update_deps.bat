@@ -8,3 +8,4 @@ for /f %%i in ('FORFILES /S /M *.v /C "cmd /c echo @RELPATH"') do (
         echo skipping testbench %%~i
     )
 )
+ECHO .\processor-main\Wrapper_tb.v >> deps.f

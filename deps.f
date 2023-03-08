@@ -46,10 +46,10 @@
 .\processor-main\processor\RAM.v 
 .\processor-main\processor\ROM.v 
 .\processor-main\processor\Wrapper.v 
-.\processor-main\Wrapper_tb.v
-.\processor-main\processor\writebackControl.v 
+.\processor-main\processor\writebackControl.v
 .\regfile-main\Logic\buffer32.v 
 .\regfile-main\Logic\decoder32.v 
 .\regfile-main\regfile\dffe_ref.v 
 .\regfile-main\regfile\regfile.v 
 .\regfile-main\regfile\register32.v 
+.\processor-main\Wrapper_tb.v 
