@@ -7,7 +7,7 @@ module executeControl(
 
     wire rFlag, iFlag, j1Flag, j2Flag;
     wire[4:0] opcode, aluOpcode, shamt;
-    opccodeDecoder parse(opcode, rFlag, iFlag, j1Flag, j2Flag, insn);
+    opcodeDecoder parse(opcode, rFlag, iFlag, j1Flag, j2Flag, insn);
     assign aluOpcode = rFlag ? insn[6:2] : 5'b0;
     assign shamt = rFlag ? insn[11:7] : 5'b0;
 
@@ -22,7 +22,7 @@ module executeControl(
 
     // ALU
     wire isNotEqual, isLessThan;
-    alu execute(dataRegA, selectedB, aluOpcode, shamt, aluOut, isNotEqual, isLessThan, adder_overflow, mult_exception, div_exception, clock)
+    alu execute(dataRegA, selectedB, aluOpcode, shamt, aluOut, isNotEqual, isLessThan, adder_overflow, mult_exception, div_exception, clock);
 
 
 endmodule

@@ -6,7 +6,7 @@ module writebackControl(
 );
     wire rFlag, iFlag, j1Flag, j2Flag, ramOrAlu, lwFlag, swFlag;
     wire[4:0] opcode, aluOpcode;
-    opccodeDecoder parse(opcode, rFlag, iFlag, j1Flag, j2Flag, insn);
+    opcodeDecoder parse(opcode, rFlag, iFlag, j1Flag, j2Flag, insn);
 
     assign lwFlag = iFlag & (opcode == 5'b01000);
     assign swFlag = iFlag & (opcode == 5'b00111);
