@@ -1,4 +1,4 @@
-module fetch(
+module fetchControl(
     output[31:0] insn_mem, PCplus1,
     input[31:0] PCafterJump,
     input reset, clock, wre, ctr_jump

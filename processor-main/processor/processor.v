@@ -66,30 +66,45 @@ module processor(
 
     // Fetch stage
     wire [31:0] fetch_PC_out
-	fetch fetch_stage(address_imem, fetch_PC_out, 32'b0, latchReset, clock, latchWrite, 1'b0); // TODO: implement PCafterJump and jump ctrl
+	fetchControl fetch_stage(address_imem, fetch_PC_out, 32'b0, latchReset, clock, latchWrite, 1'b0); // TODO: implement PCafterJump and jump ctrl
 
     // FD Latch
     wire [31:0] FD_PCout, FD_InstOut;
     register32 FD_PCreg(.out(FD_PCout), .data(fetch_PC_out), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
     register32 FD_InstReg(.out(FD_InstOut), .data(q_imem), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
 
+    // Decode stage
+    decodeControl decode_stage(ctrl_readRegA, ctrl_readRegB, FD_InstOut);
+
     // DX Latch
-    wire [31:0] DX_PCin, DX_PCout, DX_Ain, DX_Aout, DX_Bin, DX_Bout, DX_InstIn, DX_InstOut;
-    register32 DX_PCreg(.out(DX_PCout), .data(DX_PCin), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
-    register32 DX_Areg(.out(DX_Aout), .data(DX_Ain), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
-    register32 DX_Breg(.out(DX_Bout), .data(DX_Bin), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
-    register32 DX_InstReg(.out(DX_InstOut), .data(DX_InstIn), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
+    wire [31:0] DX_PCout, DX_Aout, DX_Bout, DX_InstOut;
+    register32 DX_PCreg(.out(DX_PCout), .data(FD_PCout), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
+    register32 DX_Areg(.out(DX_Aout), .data(data_readRegA), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
+    register32 DX_Breg(.out(DX_Bout), .data(data_readRegB), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
+    register32 DX_InstReg(.out(DX_InstOut), .data(FD_InstOut), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
+
+    // Execute stage
+    wire[31:0] aluOut;
+    wire adder_overflow, mult_exception, div_exception
+    executeControl execute_stage(aluOut, adder_overflow, mult_exception, div_exception, DX_Aout, DX_Bout, DX_InstOut);
+    // TODO: deal with data exception in $rstatus
 
     // XM Latch
-    wire [31:0] XM_Oin, XM_Oout, XM_Bin, XM_Bout, XM_InstIn, XM_InstOut;
-    register32 XM_Oreg(.out(XM_Oout), .data(XM_Oin), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
-    register32 XM_Breg(.out(XM_Bout), .data(XM_Bin), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
-    register32 XM_InstReg(.out(XM_InstOut), .data(XM_InstIn), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
+    wire [31:0] XM_InstOut;
+    register32 XM_Oreg(.out(address_dmem), .data(aluOut), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset)); // address input to dmem
+    register32 XM_Breg(.out(data), .data(DX_Bout), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset)); // data input to dmem
+    register32 XM_InstReg(.out(XM_InstOut), .data(DX_InstOut), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
+
+    // Memory stage
+    memoryControl memory_stage(wren, XM_InstOut);
 
     // MW Latch
-    wire [31:0] MW_Oin, MW_Oout, MW_Din, MW_Dout, MW_InstIn, MW_InstOut;
-    register32 MW_Oreg(.out(MW_Oout), .data(MW_Oin), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
-    register32 MW_Dreg(.out(MW_Dout), .data(MW_Din), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
-    register32 MW_InstReg(.out(MW_InstOut), .data(MW_InstIn), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
+    wire [31:0] MW_Oout, MW_Dout, MW_InstOut;
+    register32 MW_Oreg(.out(MW_Oout), .data(address_dmem), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
+    register32 MW_Dreg(.out(MW_Dout), .data(q_dmem), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
+    register32 MW_InstReg(.out(MW_InstOut), .data(XM_InstOut), .clk(~clock), .write_enable(latchWrite), .latchReset(latchReset));
+
+    // Writeback stage
+    writebackControl writeback_stage(ctrl_writeEnable, ctrl_writeReg, data_writeReg, MW_Dout, MW_Oout, MW_InstOut);
 
 endmodule
