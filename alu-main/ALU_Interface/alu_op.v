@@ -6,5 +6,5 @@ module alu_op(
   wire [2:0] select;
   assign select = in[2:0];
 
-  mux_8 mux(result, select, add_data, subtract_data, and_data, or_data, sll_data, sra_data, mul_data, div_data);
+  mux_8 mux(result, select, add_data, subtract_data, and_data, or_data, sll_data, sra_data, mult_data, div_data);
 endmodule
