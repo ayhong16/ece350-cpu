@@ -35,7 +35,7 @@ module Wrapper (clock, reset);
 
 
 	// ADD YOUR MEMORY FILE HERE
-	localparam INSTR_FILE = "C:/Users/ayhon/ECE350/ece350-cpu/processor-main/tests/Memory-Files/addi_basic";
+	localparam INSTR_FILE = "";
 	
 	// Main Processing Unit
 	processor CPU(.clock(clock), .reset(reset), 
