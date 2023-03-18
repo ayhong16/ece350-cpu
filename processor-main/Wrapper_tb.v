@@ -33,7 +33,7 @@
  *
  **/
 
-module Wrapper_tb #(parameter FILE = "sample");
+module Wrapper_tb #(parameter FILE = "jr_basic");
 
 	// FileData
 	localparam DIR = "Test Files/";
