@@ -36,6 +36,7 @@
 .\multdiv-main\multdiv\productSelector.v 
 .\multdiv-main\multdiv\twosComp32.v 
 .\processor-main\logic\signExtension17to32.v 
+.\processor-main\logic\signExtension27to32.v 
 .\processor-main\processor\decodeControl.v 
 .\processor-main\processor\executeControl.v 
 .\processor-main\processor\fetchControl.v 

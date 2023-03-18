@@ -65,8 +65,8 @@ module processor(
     assign latchWrite = 1'b1; // TODO: fill in logic for writing latched data
 
     // Fetch stage
-    wire [31:0] fetch_PC_out;
-	fetchControl fetch_stage(address_imem, fetch_PC_out, 32'b0, reset, ~clock, latchWrite); // TODO: implement PCafterJump and jump ctrl
+    wire [31:0] fetch_PC_out, PCAfterJump;
+	fetchControl fetch_stage(address_imem, fetch_PC_out, PCAfterJump, reset, ~clock, latchWrite, ctrl_jump); // TODO: implement PCafterJump and jump ctrl
 
     // FD Latch
     wire [31:0] FD_PCout, FD_InstOut;
@@ -85,8 +85,8 @@ module processor(
 
     // Execute stage
     wire[31:0] aluOut;
-    wire adder_overflow, mult_exception, div_exception;
-    executeControl execute_stage(aluOut, adder_overflow, mult_exception, div_exception, DX_Aout, DX_Bout, DX_InstOut, clock);
+    wire adder_overflow, mult_exception, div_exception, ctrl_jump, overwriteReg31;
+    executeControl execute_stage(aluOut, PCAfterJump, adder_overflow, mult_exception, div_exception, ctrl_jump, overwriteReg31, DX_Aout, DX_Bout, DX_InstOut, DX_PCout, clock);
     // TODO: deal with data exception in $rstatus
 
     // XM Latch
