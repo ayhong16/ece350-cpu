@@ -13,3 +13,4 @@ nop
 mul $r1, $r3, $4
 mul $r2, $r5, $6
 div $r7, $r6, $r3
+div $r8, $r5, $r3
