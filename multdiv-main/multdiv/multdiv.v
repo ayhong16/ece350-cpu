@@ -1,14 +1,8 @@
 module multdiv(
-	data_operandA, data_operandB, 
-	ctrl_MULT, ctrl_DIV, 
-	clock, 
-	data_result, data_exception, data_resultRDY);
-
-    input [31:0] data_operandA, data_operandB;
-    input ctrl_MULT, ctrl_DIV, clock;
-
-    output [31:0] data_result;
-    output data_exception, data_resultRDY;
+	input[31:0] data_operandA, data_operandB, 
+	input ctrl_MULT, ctrl_DIV, clock, 
+	output[31:0] data_result,
+    output mult_data_exception, div_data_exception, data_resultRDY);
 
     // latch initial operands
     wire [31:0] latchedMultiplicandDividend, latchedMultiplierDivisor;
@@ -23,7 +17,7 @@ module multdiv(
 
 
     // data exceptions
-    wire mult_overflow, zerotoNonZero, Bis0, Ais0, resultIs0, signA, signB, signResult, multSignMismatch, multDataException, divDataException;
+    wire mult_overflow, zerotoNonZero, Bis0, Ais0, resultIs0, signA, signB, signResult, multSignMismatch, multDataException, divDataException, data_exception;
     assign Bis0 = ~| latchedMultiplierDivisor;
     assign Ais0 = ~| latchedMultiplicandDividend;
     assign resultIs0 = ~| data_result;
@@ -35,7 +29,9 @@ module multdiv(
     assign multSignMismatch = (~signA & ~signB & signResult) | (~signA & signB & ~signResult) | (signA & ~signB & ~signResult) | (signA & signB & signResult);
     assign multDataException = mult_overflow | zerotoNonZero | (multSignMismatch & ~Bis0 & ~Ais0);
     assign divDataException = Bis0;
-    assign data_exception = (multDataException & latchedMultOperation) | (divDataException & latchedDivOperation);
+    assign mult_data_exception = multDataException & latchedMultOperation;
+    assign div_data_exception = divDataException & latchedDivOperation;
+    assign data_exception = mult_data_exception || div_data_exception;
 
     // manage counter
     wire [5:0] count;

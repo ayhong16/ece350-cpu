@@ -4,7 +4,7 @@ module decodeControl(
 );
     wire rFlag, iFlag, j1Flag, j2Flag;
     wire[4:0] opcode;
-    opcodeDecoder parse(opcode, rFlag, iFlag, j1Flag, j2Flag, insn);
+    instructionType parse(opcode, rFlag, iFlag, j1Flag, j2Flag, insn);
 
     // R-type and I-type
     wire [4:0] IR_readRegA, j2_readRegA;

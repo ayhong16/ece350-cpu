@@ -4,10 +4,10 @@ module interlockDetector(
 );
     wire[4:0] DX_IR_OP, FD_IR_RS1, FD_IR_RS2, DX_IR_RD, FD_IR_OP;
     wire FD_rFlag, FD_iFlag, FD_j1Flag, FD_j2Flag;
-    opcodeDecoder parseFD(FD_IR_OP, FD_rFlag, FD_iFlag, FD_j1Flag, FD_j2Flag, FD_insn);
+    instructionType parseFD(FD_IR_OP, FD_rFlag, FD_iFlag, FD_j1Flag, FD_j2Flag, FD_insn);
 
     wire DX_rFlag, DX_iFlag, DX_j1Flag, DX_j2Flag;
-    opcodeDecoder parseDX(DX_IR_OP, DX_rFlag, DX_iFlag, DX_j1Flag, DX_j2Flag, DX_insn);
+    instructionType parseDX(DX_IR_OP, DX_rFlag, DX_iFlag, DX_j1Flag, DX_j2Flag, DX_insn);
 
     wire DXhasRD, FDhasRS1, FDhasRS2;
     assign DXhasRD = DX_rFlag || DX_iFlag || DX_j2Flag;

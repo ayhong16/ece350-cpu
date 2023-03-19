@@ -61,41 +61,54 @@ module processor(
 	output [31:0] data_writeReg;
 	input [31:0] data_readRegA, data_readRegB;
 
+    // Stalling
     wire latchWrite, branchFlush;
     wire[31:0] nop;
     assign nop = 32'b0;
-    assign latchWrite = 1'b1; // TODO: fill in logic for writing latched data
+    assign latchWrite = ~(isMultDiv && ~data_resultRDY);
 
     // Fetch stage
     wire [31:0] fetch_PC_out, PCAfterJump;
-	fetchControl fetch_stage(address_imem, fetch_PC_out, PCAfterJump, reset, ~clock, latchWrite, ctrl_jump); // TODO: implement PCafterJump and jump ctrl
+	fetchControl fetch_stage(address_imem, fetch_PC_out, PCAfterJump, reset, ~clock, latchWrite, ctrl_branch); // TODO: implement PCafterJump and jump ctrl
 
     // FD Latch
     wire [31:0] FD_PCout, FD_InstOut, FD_branchCheck;
-    mux_2 checkFDflush(FD_branchCheck, ctrl_jump, q_imem, nop);
-    register32 FD_PCreg(.out(FD_PCout), .data(fetch_PC_out), .clk(~clock), .write_enable(latchWrite), .reset(reset));
-    register32 FD_InstReg(.out(FD_InstOut), .data(FD_branchCheck), .clk(~clock), .write_enable(latchWrite), .reset(reset));
+    // mux_2 checkFDflush(FD_branchCheck, ctrl_branch, q_imem, nop);
+    register32 FD_PCreg(FD_PCout, fetch_PC_out, ~clock, latchWrite, reset);
+    register32 FD_InstReg(FD_InstOut, q_imem, ~clock, latchWrite, reset);
 
     // Decode stage
     decodeControl decode_stage(ctrl_readRegA, ctrl_readRegB, FD_InstOut);
 
     // DX Latch
     wire [31:0] DX_PCout, DX_Aout, DX_Bout, DX_InstOut, DX_branchCheck;
-    mux_2 checkDXFlush(DX_branchCheck, branchFlush, FD_InstOut, nop);
+    // mux_2 checkDXFlush(DX_branchCheck, branchFlush, FD_InstOut, nop);
     register32 DX_PCreg(.out(DX_PCout), .data(FD_PCout), .clk(~clock), .write_enable(latchWrite), .reset(reset));
     register32 DX_Areg(.out(DX_Aout), .data(data_readRegA), .clk(~clock), .write_enable(latchWrite), .reset(reset));
     register32 DX_Breg(.out(DX_Bout), .data(data_readRegB), .clk(~clock), .write_enable(latchWrite), .reset(reset));
-    register32 DX_InstReg(.out(DX_InstOut), .data(DX_branchCheck), .clk(~clock), .write_enable(latchWrite), .reset(reset));
+    register32 DX_InstReg(.out(DX_InstOut), .data(FD_InstOut), .clk(~clock), .write_enable(latchWrite), .reset(reset));
 
     // Execute stage
-    wire[31:0] aluOut;
-    wire adder_overflow, mult_exception, div_exception, ctrl_jump, overwriteReg31;
-    executeControl execute_stage(aluOut, PCAfterJump, adder_overflow, mult_exception, div_exception, ctrl_jump, overwriteReg31, DX_Aout, DX_Bout, DX_InstOut, DX_PCout, clock);
+    wire[31:0] aluOut, executeOut, selectedB;
+    wire[4:0] aluOpcode, shamt;
+    wire adder_overflow, ctrl_branch, isNotEqual, isLessThan, isMultDiv;
+    executeControl execute_stage(PCAfterJump, selectedB, aluOpcode, shamt, ctrl_branch, isMult, isDiv, DX_Aout, DX_Bout, DX_InstOut, DX_PCout, clock);
+
+    wire data_resultRDY, mult_exception, div_exception, isMult, isDiv, ctrlMult, ctrlDiv, disableCtrlSignal;
+    wire[31:0] multDivResult;
+    assign isMultDiv = isMult || isDiv;
+    assign executeOut = isMultDiv ? multDivResult : aluOut;
+    assign ctrlMult = isMult & ~disableCtrlSignal & ~data_resultRDY & ~clock;
+    assign ctrlDiv = isDiv & ~disableCtrlSignal & ~data_resultRDY & ~clock;
+    dffe_ref disabled(disableCtrlSignal, 1'b1, clock, isMultDiv, data_resultRDY);
+    multdiv multDiv(DX_Aout, selectedB, ctrlMult, ctrlDiv, clock, multDivResult, mult_exception, div_exception, data_resultRDY);
+    alu execute(DX_Aout, selectedB, aluOpcode, shamt, aluOut, isNotEqual, isLessThan, adder_overflow, clock);
+    
     // TODO: deal with data exception in $rstatus
 
     // XM Latch
     wire [31:0] XM_InstOut;
-    register32 XM_Oreg(.out(address_dmem), .data(aluOut), .clk(~clock), .write_enable(latchWrite), .reset(reset)); // address input to dmem
+    register32 XM_Oreg(.out(address_dmem), .data(executeOut), .clk(~clock), .write_enable(latchWrite), .reset(reset)); // address input to dmem
     register32 XM_Breg(.out(data), .data(DX_Bout), .clk(~clock), .write_enable(latchWrite), .reset(reset)); // data input to dmem
     register32 XM_InstReg(.out(XM_InstOut), .data(DX_InstOut), .clk(~clock), .write_enable(latchWrite), .reset(reset));
 

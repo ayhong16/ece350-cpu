@@ -4,7 +4,7 @@ module memoryControl(
 );
     wire rFlag, iFlag, j1Flag, j2Flag;
     wire[4:0] opcode;
-    opcodeDecoder parse(opcode, rFlag, iFlag, j1Flag, j2Flag, insn);
+    instructionType parse(opcode, rFlag, iFlag, j1Flag, j2Flag, insn);
 
     assign data_we = iFlag & (opcode == 5'b00111);
 

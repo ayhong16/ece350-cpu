@@ -1,9 +1,9 @@
-module opcodeDecoder_tb;
+module instructionType_tb;
     wire [4:0] opcode;
     wire rFlag, iFlag, j1Flag, j2Flag;
     wire [31:0] instruction;
 
-    opcodeDecoder decode(opcode, rFlag, iFlag, j1Flag, j2Flag, instruction);
+    instructionType decode(opcode, rFlag, iFlag, j1Flag, j2Flag, instruction);
 
     integer i;
     assign instruction[31:27] = i[4:0];

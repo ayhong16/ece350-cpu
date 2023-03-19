@@ -33,7 +33,7 @@
  *
  **/
 
-module Wrapper_tb #(parameter FILE = "jr_basic");
+module Wrapper_tb #(parameter FILE = "multdiv");
 
 	// FileData
 	localparam DIR = "Test Files/";
