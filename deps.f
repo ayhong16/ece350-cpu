@@ -40,6 +40,7 @@
 .\processor-main\processor\decodeControl.v 
 .\processor-main\processor\executeControl.v 
 .\processor-main\processor\fetchControl.v 
+.\processor-main\processor\interlockDetector.v 
 .\processor-main\processor\memoryControl.v 
 .\processor-main\processor\opcodeDecoder.v 
 .\processor-main\processor\PC.v 

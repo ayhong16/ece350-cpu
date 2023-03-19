@@ -1,10 +1,8 @@
-Cycle  10: Wrote 17 into register 3
-Cycle  18: Wrote 21 into register 3
 ============== Testing Mode ==============
 Reg  0:           0
 Reg  1:           0
 Reg  2:           0
-Reg  3:          21
+Reg  3:           0
 Reg  4:           0
 Reg  5:           0
 Reg  6:           0
