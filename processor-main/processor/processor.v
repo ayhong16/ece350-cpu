@@ -92,8 +92,12 @@ module processor(
     wire[31:0] aluOut, executeOut, selectedB;
     wire[4:0] aluOpcode, shamt;
     wire adder_overflow, ctrl_branch, isNotEqual, isLessThan, isMultDiv;
-    executeControl execute_stage(PCAfterJump, selectedB, aluOpcode, shamt, ctrl_branch, isMult, isDiv, DX_Aout, DX_Bout, DX_InstOut, DX_PCout, clock);
+    executeControl execute_stage(PCAfterJump, selectedB, aluOpcode, shamt, ctrl_branch, isMult, isDiv, bypassA, bypassB, DX_InstOut, DX_PCout, clock);
 
+    // ALUinA Bypassing
+    wire[31:0] bypassA, bypassB;
+    bypassALUinA A_bypass(bypassA, DX_InstOut, XM_InstOut, MW_InstOut, address_dmem, data_writeReg, DX_Aout);
+    bypassALUinB B_bypass(bypassB, DX_InstOut, XM_InstOut, MW_InstOut, address_dmem, data_writeReg, DX_Bout);
     wire data_resultRDY, mult_exception, div_exception, isMult, isDiv, ctrlMult, ctrlDiv, disableCtrlSignal;
     wire[31:0] multDivResult;
     assign isMultDiv = isMult || isDiv;
@@ -101,9 +105,8 @@ module processor(
     assign ctrlMult = isMult & ~disableCtrlSignal & ~data_resultRDY & ~clock;
     assign ctrlDiv = isDiv & ~disableCtrlSignal & ~data_resultRDY & ~clock;
     dffe_ref disabled(disableCtrlSignal, 1'b1, clock, isMultDiv, data_resultRDY);
-    multdiv multDiv(DX_Aout, selectedB, ctrlMult, ctrlDiv, clock, multDivResult, mult_exception, div_exception, data_resultRDY);
-    alu execute(DX_Aout, selectedB, aluOpcode, shamt, aluOut, isNotEqual, isLessThan, adder_overflow, clock);
-    
+    multdiv multDiv(bypassA, selectedB, ctrlMult, ctrlDiv, clock, multDivResult, mult_exception, div_exception, data_resultRDY);
+    alu execute(bypassA, selectedB, aluOpcode, shamt, aluOut, isNotEqual, isLessThan, adder_overflow, clock);
     // TODO: deal with data exception in $rstatus
 
     // XM Latch
