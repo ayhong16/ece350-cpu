@@ -38,6 +38,6 @@ module bypassControl(
 
     // bypass data going into dmem iff XM is sw and MW is lw and they have same $rd
     assign XM_SW_RD = XM_swFlag ? XMinsn[26:22] : 5'b0;
-    assign dmem_dataIn = (XM_swFlag && MW_lwFlag && XM_SW_RD == MW_IR_RD) ? data_writeReg : XMBout;
+    assign dmem_dataIn = (XM_swFlag && MWhasWriteReg && XM_SW_RD == MW_IR_RD) ? data_writeReg : XMBout;
 
 endmodule

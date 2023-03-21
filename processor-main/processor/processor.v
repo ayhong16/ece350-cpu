@@ -66,6 +66,10 @@ module processor(
     wire[31:0] nop;
     assign nop = 32'b0;
     assign latchWrite = ~(isMultDiv && ~data_resultRDY);
+    
+    // Bypassing
+    wire[31:0] bypassA, bypassB;
+    bypassControl bypass(bypassA, bypassB, data, DX_InstOut, XM_InstOut, MW_InstOut, address_dmem, XM_Bout, data_writeReg, DX_Aout, DX_Bout);
 
     // Fetch stage
     wire [31:0] fetch_PC_out, PCAfterJump;
@@ -113,10 +117,6 @@ module processor(
 
     // Memory stage
     memoryControl memory_stage(wren, XM_InstOut);
-
-    // Bypassing
-    wire[31:0] bypassA, bypassB;
-    bypassControl aluBypass(bypassA, bypassB, data, DX_InstOut, XM_InstOut, MW_InstOut, address_dmem, XM_Bout, data_writeReg, DX_Aout, DX_Bout);
 
     // MW Latch
     wire [31:0] MW_Oout, MW_Dout, MW_InstOut;
