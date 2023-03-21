@@ -33,7 +33,7 @@
  *
  **/
 
-module Wrapper_tb #(parameter FILE = "multdiv_bypassing");
+module Wrapper_tb #(parameter FILE = "memory_basic");
 
 	// FileData
 	localparam DIR = "Test Files/";

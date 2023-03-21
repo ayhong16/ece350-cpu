@@ -12,10 +12,12 @@ module bypassALU(
     wire MW_rFlag, MW_iFlag, MW_j1Flag, MW_j2Flag;
     instructionType parseMW(MW_IR_OP, MW_rFlag, MW_iFlag, MW_j1Flag, MW_j2Flag, MWinsn);
 
-    wire DXhasRS1, XMhasRD, MWhasRD;
+    wire DXhasRS1, XMhasRD, MWhasRD, XM_swFlag, MW_swFlag;
+    assign XM_swFlag = XM_IR_OP == 5'b00111;
+    assign MW_swFlag = MW_IR_OP == 5'b00111;
     assign DXhasRS1 = DX_rFlag || DX_iFlag;
-    assign XMhasRD = XM_rFlag || XM_iFlag || XM_j2Flag;
-    assign MWhasRD = MW_rFlag || MW_iFlag || MW_j2Flag;
+    assign XMhasRD = XM_rFlag || (XM_iFlag && ~XM_swFlag) || XM_j2Flag;
+    assign MWhasRD = MW_rFlag || (MW_iFlag && ~MW_swFlag) || MW_j2Flag;
 
     assign DX_IR_RS1 = DXhasRS1 ? DXinsn[21:17] : 5'b0;
     assign DX_IR_RS2 = DX_rFlag ? DXinsn[16:12] : 5'b0;

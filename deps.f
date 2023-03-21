@@ -36,7 +36,6 @@
 .\multdiv-main\multdiv\productSelector.v 
 .\multdiv-main\multdiv\twosComp32.v 
 .\processor-main\hazard-logic\bypassALU.v 
-.\processor-main\hazard-logic\bypassMultDiv.v 
 .\processor-main\hazard-logic\interlockDetector.v 
 .\processor-main\logic\signExtension17to32.v 
 .\processor-main\logic\signExtension27to32.v 
