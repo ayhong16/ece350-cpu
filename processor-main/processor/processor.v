@@ -94,9 +94,6 @@ module processor(
     wire adder_overflow, ctrl_branch, isNotEqual, isLessThan, isMultDiv;
     executeControl execute_stage(PCAfterJump, selectedB, aluOpcode, shamt, ctrl_branch, isMult, isDiv, bypassA, bypassB, DX_InstOut, DX_PCout, clock);
 
-    // ALUinA Bypassing
-    wire[31:0] bypassA, bypassB;
-    bypassALU aluBypass(bypassA, bypassB, DX_InstOut, XM_InstOut, MW_InstOut, address_dmem, data_writeReg, DX_Aout, DX_Bout);
     wire data_resultRDY, mult_exception, div_exception, isMult, isDiv, ctrlMult, ctrlDiv, disableCtrlSignal;
     wire[31:0] multDivResult;
     assign isMultDiv = isMult || isDiv;
@@ -109,13 +106,17 @@ module processor(
     // TODO: deal with data exception in $rstatus
 
     // XM Latch
-    wire [31:0] XM_InstOut;
+    wire [31:0] XM_InstOut, XM_Bout;
     register32 XM_Oreg(.out(address_dmem), .data(executeOut), .clk(~clock), .write_enable(latchWrite), .reset(reset)); // address input to dmem
-    register32 XM_Breg(.out(data), .data(DX_Bout), .clk(~clock), .write_enable(latchWrite), .reset(reset)); // data input to dmem
+    register32 XM_Breg(.out(XM_Bout), .data(DX_Bout), .clk(~clock), .write_enable(latchWrite), .reset(reset)); // data input to dmem
     register32 XM_InstReg(.out(XM_InstOut), .data(DX_InstOut), .clk(~clock), .write_enable(latchWrite), .reset(reset));
 
     // Memory stage
     memoryControl memory_stage(wren, XM_InstOut);
+
+    // Bypassing
+    wire[31:0] bypassA, bypassB;
+    bypassControl aluBypass(bypassA, bypassB, data, DX_InstOut, XM_InstOut, MW_InstOut, address_dmem, XM_Bout, data_writeReg, DX_Aout, DX_Bout);
 
     // MW Latch
     wire [31:0] MW_Oout, MW_Dout, MW_InstOut;
