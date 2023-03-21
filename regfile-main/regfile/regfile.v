@@ -30,13 +30,13 @@ module regfile (
 	// Connect each register
 	wire [31:0][31:0] registers;
 
-	register32 set_reg0(registers[0], data_writeReg, ~clock, 1'b0, ctrl_reset);
+	register32 set_reg0(registers[0], data_writeReg, clock, 1'b0, ctrl_reset);
 	buffer32 buffer0A(data_readRegA, 32'b0, readRegisterA[0]);
 	buffer32 buffer0B(data_readRegB, 32'b0, readRegisterB[0]);
 
 	genvar j;
 	for (j = 1; j < 32; j = j + 1) begin
-		register32 set_reg(registers[j], data_writeReg, ~clock, writePortAnd[j], ctrl_reset);
+		register32 set_reg(registers[j], data_writeReg, clock, writePortAnd[j], ctrl_reset);
 		buffer32 bufferA(data_readRegA, registers[j], readRegisterA[j]);
 		buffer32 bufferB(data_readRegB, registers[j], readRegisterB[j]);
 	end

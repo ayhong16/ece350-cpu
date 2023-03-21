@@ -69,13 +69,13 @@ module processor(
 
     // Fetch stage
     wire [31:0] fetch_PC_out, PCAfterJump;
-	fetchControl fetch_stage(address_imem, fetch_PC_out, PCAfterJump, reset, ~clock, latchWrite, ctrl_branch); // TODO: implement PCafterJump and jump ctrl
+	fetchControl fetch_stage(address_imem, fetch_PC_out, PCAfterJump, reset, ~clock, latchWrite || insertNopForMultDiv, ctrl_branch); // TODO: implement PCafterJump and jump ctrl
 
     // FD Latch
     wire [31:0] FD_PCout, FD_InstOut, FD_branchCheck;
     // mux_2 checkFDflush(FD_branchCheck, ctrl_branch, q_imem, nop);
-    register32 FD_PCreg(FD_PCout, fetch_PC_out, ~clock, latchWrite, reset);
-    register32 FD_InstReg(FD_InstOut, q_imem, ~clock, latchWrite, reset);
+    register32 FD_PCreg(FD_PCout, fetch_PC_out, ~clock, latchWrite || insertNopForMultDiv, reset);
+    register32 FD_InstReg(FD_InstOut, q_imem, ~clock, latchWrite || insertNopForMultDiv, reset);
 
     // Decode stage
     decodeControl decode_stage(ctrl_readRegA, ctrl_readRegB, FD_InstOut);
@@ -96,8 +96,7 @@ module processor(
 
     // ALUinA Bypassing
     wire[31:0] bypassA, bypassB;
-    bypassALUinA A_bypass(bypassA, DX_InstOut, XM_InstOut, MW_InstOut, address_dmem, data_writeReg, DX_Aout);
-    bypassALUinB B_bypass(bypassB, DX_InstOut, XM_InstOut, MW_InstOut, address_dmem, data_writeReg, DX_Bout);
+    bypassALU aluBypass(bypassA, bypassB, DX_InstOut, XM_InstOut, MW_InstOut, address_dmem, data_writeReg, DX_Aout, DX_Bout);
     wire data_resultRDY, mult_exception, div_exception, isMult, isDiv, ctrlMult, ctrlDiv, disableCtrlSignal;
     wire[31:0] multDivResult;
     assign isMultDiv = isMult || isDiv;
