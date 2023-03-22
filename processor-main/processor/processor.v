@@ -95,10 +95,10 @@ module processor(
     // Execute stage
     wire[31:0] aluOut, executeOut, selectedA, selectedB, AafterJal, aluOpcodeAfterJal, PCsetToTarget;
     wire[4:0] aluOpcode, shamt;
-    wire adder_overflow, ctrl_branch, isNotEqual, isLessThan, isMultDiv, isBLT, isBNE;
-    executeControl execute_stage(PCsetToTarget, selectedA, selectedB, aluOpcode, shamt, ctrl_branch, isMult, isDiv, isBLT, isBNE, bypassA, bypassB, DX_InstOut, DX_PCout, clock);
+    wire adder_overflow, ctrl_branch, isNotEqual, isLessThan, isMultDiv, isBLT, isBNE, isBEX;
+    executeControl execute_stage(PCsetToTarget, selectedA, selectedB, aluOpcode, shamt, ctrl_branch, isMult, isDiv, isBLT, isBNE, isBEX, bypassA, bypassB, DX_InstOut, DX_PCout, clock);
+    assign PCAfterJump = ((isBLT && isLessThan) ||(isBNE && isNotEqual) || (isBEX && isNotEqual)) ? aluOut : PCsetToTarget;
 
-    assign PCAfterJump = ((isBLT && isLessThan) ||(isBNE && isNotEqual)) ? aluOut : PCsetToTarget;
     // For Jal only: overwrite reg31 with PC+1 and use ALU adder
     wire data_resultRDY, mult_exception, div_exception, isMult, isDiv, ctrlMult, ctrlDiv, disableCtrlSignal;
     wire[31:0] multDivResult;
