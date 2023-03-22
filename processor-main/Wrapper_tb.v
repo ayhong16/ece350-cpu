@@ -33,7 +33,7 @@
  *
  **/
 
-module Wrapper_tb #(parameter FILE = "control_basic");
+module Wrapper_tb #(parameter FILE = "stalling_edge_case");
 
 	// FileData
 	localparam DIR = "Test Files/";
