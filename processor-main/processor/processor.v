@@ -93,10 +93,12 @@ module processor(
     register32 DX_InstReg(.out(DX_InstOut), .data(DX_branchCheck), .clk(~clock), .write_enable(latchWrite), .reset(reset));
 
     // Execute stage
-    wire[31:0] aluOut, executeOut, selectedB;
+    wire[31:0] aluOut, executeOut, selectedA, selectedB, AafterJal, aluOpcodeAfterJal;
     wire[4:0] aluOpcode, shamt;
-    wire adder_overflow, ctrl_branch, isNotEqual, isLessThan, isMultDiv;
-    executeControl execute_stage(PCAfterJump, selectedB, aluOpcode, shamt, ctrl_branch, isMult, isDiv, bypassA, bypassB, DX_InstOut, DX_PCout, clock);
+    wire adder_overflow, ctrl_branch, isNotEqual, isLessThan, isMultDiv, overwriteReg31;
+    executeControl execute_stage(PCAfterJump, selectedA, selectedB, aluOpcode, shamt, ctrl_branch, isMult, isDiv, overwriteReg31, bypassA, bypassB, DX_InstOut, DX_PCout, clock);
+
+    // For Jal only: overwrite reg31 with PC+1 and use ALU adder
     wire data_resultRDY, mult_exception, div_exception, isMult, isDiv, ctrlMult, ctrlDiv, disableCtrlSignal;
     wire[31:0] multDivResult;
     assign isMultDiv = isMult || isDiv;
@@ -105,7 +107,7 @@ module processor(
     assign ctrlDiv = isDiv & ~disableCtrlSignal & ~data_resultRDY & ~clock;
     dffe_ref disabled(disableCtrlSignal, 1'b1, clock, isMultDiv, data_resultRDY);
     multdiv multDiv(bypassA, selectedB, ctrlMult, ctrlDiv, clock, multDivResult, mult_exception, div_exception, data_resultRDY);
-    alu execute(bypassA, selectedB, aluOpcode, shamt, aluOut, isNotEqual, isLessThan, adder_overflow, clock);
+    alu execute(selectedA, selectedB, aluOpcode, shamt, aluOut, isNotEqual, isLessThan, adder_overflow, clock);
     // TODO: deal with data exception in $rstatus
 
     // XM Latch

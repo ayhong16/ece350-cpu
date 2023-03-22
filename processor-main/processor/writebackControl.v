@@ -4,24 +4,19 @@ module writebackControl(
     output[31:0] data_writeReg,
     input[31:0] dataFromDmem, dataFromAlu, insn
 );
-    wire rFlag, iFlag, j1Flag, j2Flag, useRamData, lwFlag, swFlag, addiFlag;
+    wire rFlag, iFlag, j1Flag, j2Flag, useRamData, lwFlag, swFlag, addiFlag, jalFlag, specifiedWriteReg;
     wire[4:0] opcode, aluOpcode;
     instructionType parse(opcode, rFlag, iFlag, j1Flag, j2Flag, insn);
 
-    wire w0, w1, w2, w3, w4;
-    assign w0 = opcode[0];
-    assign w1 = opcode[1];
-    assign w2 = opcode[2];
-    assign w3 = opcode[3];
-    assign w4 = opcode[4];
-
-    assign lwFlag = iFlag & ~w4 & w3 & ~w2 & ~w1 & ~w0;
-    assign swFlag = iFlag & ~w4 & ~w3 & w2 & w1 & w0;
-    assign addiFlag = iFlag & ~w4 & ~w3 & w2 & ~w1 & w0;
+    assign lwFlag = iFlag && (opcode == 5'b01000);
+    assign swFlag = iFlag && (opcode == 5'b00111);
+    assign addiFlag = iFlag && (opcode == 5'b00101);
+    assign jalFlag = j1Flag && (opcode == 5'b00011);
     assign useRamData = lwFlag || swFlag;
 
-    assign ctrl_writeEnable = rFlag || lwFlag || addiFlag;
-    assign ctrl_writeReg = insn[26:22];
+    assign specifiedWriteReg = rFlag || lwFlag || addiFlag;
+    assign ctrl_writeEnable = rFlag || lwFlag || addiFlag || jalFlag;
+    assign ctrl_writeReg = specifiedWriteReg ? insn[26:22] : (jalFlag ? 5'b11111 : 5'b0);
 
     mux_2 aluOrDMem(data_writeReg, useRamData, dataFromAlu, dataFromDmem);
 

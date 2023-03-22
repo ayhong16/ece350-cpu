@@ -1,6 +1,6 @@
 module branchControl(
     output[31:0] PCafterJump,
-    output ctrl_branch,
+    output ctrl_branch, overwriteReg31,
     input iFlag, j1Flag, j2Flag,
     input[31:0] insn, data_readRegA, PC
 );
@@ -12,6 +12,12 @@ module branchControl(
     assign jumpFlag = j1Flag && (opcode & 5'b00001);
     assign ctrl_branch = jalFlag || jumpFlag || jrFlag; // TODO: extra check for bex, bne, and blt
 
-    assign PCafterJump = jrFlag ? data_readRegA : PC;
+    wire[26:0] target;
+    wire[31:0] extendedTarget;
+    assign target = insn[26:0];
+    signExtension27to32 signExtend(extendedTarget, target);
+
+    assign PCafterJump = jrFlag ? data_readRegA : ((jalFlag || jumpFlag) ? extendedTarget : PC);
+    assign overwriteReg31 = jalFlag;
 
 endmodule
