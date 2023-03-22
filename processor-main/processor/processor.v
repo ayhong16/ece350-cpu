@@ -73,20 +73,24 @@ module processor(
 
     // Fetch stage
     wire [31:0] fetch_PC_out, PCAfterJump;
-	fetchControl fetch_stage(address_imem, fetch_PC_out, PCAfterJump, reset, ~clock, latchWrite, ctrl_branch); // TODO: implement PCafterJump and jump ctrl
+	fetchControl fetch_stage(address_imem, fetch_PC_out, PCAfterJump, reset, ~clock, fetch_FD_wren, ctrl_branch); // TODO: implement PCafterJump and jump ctrl
 
     // FD Latch
     wire [31:0] FD_PCout, FD_InstOut, FD_branchCheck;
+    wire fetch_FD_wren;
+    assign fetch_FD_wren = latchWrite && ~interlock;
     mux_2 checkFDflush(FD_branchCheck, ctrl_branch, q_imem, nop);
-    register32 FD_PCreg(FD_PCout, fetch_PC_out, ~clock, latchWrite, reset);
-    register32 FD_InstReg(FD_InstOut, FD_branchCheck, ~clock, latchWrite, reset);
+    register32 FD_PCreg(FD_PCout, fetch_PC_out, ~clock, fetch_FD_wren, reset);
+    register32 FD_InstReg(FD_InstOut, FD_branchCheck, ~clock, fetch_FD_wren, reset);
 
     // Decode stage
+    wire interlock;
     decodeControl decode_stage(ctrl_readRegA, ctrl_readRegB, FD_InstOut);
+    interlockDetector detect_interlock(interlock, FD_InstOut, DX_InstOut);
 
     // DX Latch
     wire [31:0] DX_PCout, DX_Aout, DX_Bout, DX_InstOut, DX_branchCheck;
-    mux_2 checkDXFlush(DX_branchCheck, ctrl_branch, FD_InstOut, nop);
+    mux_2 checkDXFlush(DX_branchCheck, ctrl_branch || interlock, FD_InstOut, nop);
     register32 DX_PCreg(.out(DX_PCout), .data(FD_PCout), .clk(~clock), .write_enable(latchWrite), .reset(reset));
     register32 DX_Areg(.out(DX_Aout), .data(data_readRegA), .clk(~clock), .write_enable(latchWrite), .reset(reset));
     register32 DX_Breg(.out(DX_Bout), .data(data_readRegB), .clk(~clock), .write_enable(latchWrite), .reset(reset));
