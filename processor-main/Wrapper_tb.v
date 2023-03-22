@@ -33,7 +33,7 @@
  *
  **/
 
-module Wrapper_tb #(parameter FILE = "stalling_edge_case");
+module Wrapper_tb #(parameter FILE = "bex_bypassing");
 
 	// FileData
 	localparam DIR = "Test Files/";
