@@ -23,7 +23,7 @@ module executeControl(
     wire[31:0] immediate;
     signExtension17to32 signExtend(immediate, insn[16:0]);
 
-    assign setxFlag = iFlag && (opcode == 5'b10101);
+    assign isSETX = iFlag && (opcode == 5'b10101);
     assign compBranchFlag = isBLT || isBNE;
     branchControl branch(PCafterJump, ctrl_branch, overwriteReg31, isBLT, isBNE, isBEX, isSETX, iFlag, j1Flag, j2Flag, insn, dataRegA, PC);
 
