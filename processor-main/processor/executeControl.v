@@ -17,7 +17,7 @@ module executeControl(
     // R-type regular adding in ALU
     wire[31:0] selectedB;
     assign selectedB = rFlag ? dataRegB : ((overwriteReg31 || isBEX) ? 32'b0 : (isSETX ? PCafterJump : immediate));
-    assign selectedA = (overwriteReg31 || compBranchFlag) ? PC : (setxFlag ? 32'b0 : dataRegA);
+    assign selectedA = (overwriteReg31 || compBranchFlag) ? PC : (isSETX ? 32'b0 : dataRegA);
 
     // I-type sign extension for immediate
     wire[31:0] immediate;
