@@ -20,13 +20,13 @@ module bypassControl(
     assign XMhasWriteReg = XM_rFlag || (XM_iFlag && ~XM_swFlag) || XM_j2Flag;
     assign MWhasWriteReg = MW_rFlag || (MW_iFlag && ~MW_swFlag) || MW_j2Flag;
 
-    assign DX_IR_RS1 = DXhasRS1 ? DXinsn[21:17] : 5'b0;
+    assign DX_IR_RS1 = DXhasRS1 ? DXinsn[21:17] : (DX_j2Flag ? DXinsn[26:22] : 5'b0);
     assign DX_IR_RS2 = DX_rFlag ? DXinsn[16:12] : 5'b0;
     assign XM_IR_RD = XMhasWriteReg ? XMinsn[26:22] : 5'b0;
     assign MW_IR_RD = MWhasWriteReg ? MWinsn[26:22] : 5'b0;
 
     wire DX_RS1_Equals_XM_RD, DX_RS1_Equals_MW_RD; // bypass ALUinA
-    assign DX_RS1_Equals_XM_RD = (DXhasRS1 && XMhasWriteReg && XM_IR_RD != 5'b0) ? (DX_IR_RS1 == XM_IR_RD): 1'b0;
+    assign DX_RS1_Equals_XM_RD = ((DXhasRS1 || DX_j2Flag) && XMhasWriteReg && XM_IR_RD != 5'b0) ? (DX_IR_RS1 == XM_IR_RD): 1'b0;
     assign DX_RS1_Equals_MW_RD = (DXhasRS1 && MWhasWriteReg && MW_IR_RD != 5'b0) ? (DX_IR_RS1 == MW_IR_RD): 1'b0;
 
     wire DX_RS2_Equals_XM_RD, DX_RS2_Equals_MW_RD; // bypass ALUinB

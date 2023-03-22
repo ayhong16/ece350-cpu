@@ -62,11 +62,11 @@ module processor(
 	input [31:0] data_readRegA, data_readRegB;
 
     // Stalling
-    wire latchWrite, branchFlush;
+    wire latchWrite;
     wire[31:0] nop;
     assign nop = 32'b0;
     assign latchWrite = ~(isMultDiv && ~data_resultRDY);
-    
+
     // Bypassing
     wire[31:0] bypassA, bypassB;
     bypassControl bypass(bypassA, bypassB, data, DX_InstOut, XM_InstOut, MW_InstOut, address_dmem, XM_Bout, data_writeReg, DX_Aout, DX_Bout);
@@ -77,27 +77,26 @@ module processor(
 
     // FD Latch
     wire [31:0] FD_PCout, FD_InstOut, FD_branchCheck;
-    // mux_2 checkFDflush(FD_branchCheck, ctrl_branch, q_imem, nop);
+    mux_2 checkFDflush(FD_branchCheck, ctrl_branch, q_imem, nop);
     register32 FD_PCreg(FD_PCout, fetch_PC_out, ~clock, latchWrite, reset);
-    register32 FD_InstReg(FD_InstOut, q_imem, ~clock, latchWrite, reset);
+    register32 FD_InstReg(FD_InstOut, FD_branchCheck, ~clock, latchWrite, reset);
 
     // Decode stage
     decodeControl decode_stage(ctrl_readRegA, ctrl_readRegB, FD_InstOut);
 
     // DX Latch
     wire [31:0] DX_PCout, DX_Aout, DX_Bout, DX_InstOut, DX_branchCheck;
-    // mux_2 checkDXFlush(DX_branchCheck, branchFlush, FD_InstOut, nop);
+    mux_2 checkDXFlush(DX_branchCheck, ctrl_branch, FD_InstOut, nop);
     register32 DX_PCreg(.out(DX_PCout), .data(FD_PCout), .clk(~clock), .write_enable(latchWrite), .reset(reset));
     register32 DX_Areg(.out(DX_Aout), .data(data_readRegA), .clk(~clock), .write_enable(latchWrite), .reset(reset));
     register32 DX_Breg(.out(DX_Bout), .data(data_readRegB), .clk(~clock), .write_enable(latchWrite), .reset(reset));
-    register32 DX_InstReg(.out(DX_InstOut), .data(FD_InstOut), .clk(~clock), .write_enable(latchWrite), .reset(reset));
+    register32 DX_InstReg(.out(DX_InstOut), .data(DX_branchCheck), .clk(~clock), .write_enable(latchWrite), .reset(reset));
 
     // Execute stage
     wire[31:0] aluOut, executeOut, selectedB;
     wire[4:0] aluOpcode, shamt;
     wire adder_overflow, ctrl_branch, isNotEqual, isLessThan, isMultDiv;
     executeControl execute_stage(PCAfterJump, selectedB, aluOpcode, shamt, ctrl_branch, isMult, isDiv, bypassA, bypassB, DX_InstOut, DX_PCout, clock);
-
     wire data_resultRDY, mult_exception, div_exception, isMult, isDiv, ctrlMult, ctrlDiv, disableCtrlSignal;
     wire[31:0] multDivResult;
     assign isMultDiv = isMult || isDiv;

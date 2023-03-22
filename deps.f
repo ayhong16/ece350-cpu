@@ -39,6 +39,7 @@
 .\processor-main\hazard-logic\interlockDetector.v 
 .\processor-main\logic\signExtension17to32.v 
 .\processor-main\logic\signExtension27to32.v 
+.\processor-main\processor\branchControl.v 
 .\processor-main\processor\decodeControl.v 
 .\processor-main\processor\executeControl.v 
 .\processor-main\processor\fetchControl.v 
