@@ -7,7 +7,7 @@ module fetchControl(
     wire [31:0] PCafterAdd, PCnext;
     wire overflow;
     cla_adder adder(PCafterAdd, overflow, insn_mem, 32'b1, 1'b0);
-    PC program_counter(insn_mem, PCnext, clock, reset, wre);
+    PC program_counter(insn_mem, PCnext, ~clock, reset, wre);
     mux_2 checkJump(PCnext, ctrl_branch, PCafterAdd, PCafterJump);
 
     assign PCplus1 = PCafterAdd;
