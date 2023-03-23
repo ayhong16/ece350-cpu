@@ -3,7 +3,7 @@ module executeControl(
     output[4:0] aluOpcode, shiftAmt,
     output ctrl_branch, isMult, isDiv, isBLT, isBNE, isBEX,
     input[31:0] dataRegA, dataRegB, insn, PC,
-    input clock
+    input isLessThan, isNotEqual, clock
 );
 
     wire rFlag, iFlag, j1Flag, j2Flag, overwriteReg31, compBranchFlag, isSETX;
@@ -24,6 +24,6 @@ module executeControl(
     signExtension17to32 signExtend(immediate, insn[16:0]);
 
     assign compBranchFlag = isBLT || isBNE;
-    branchControl branch(PCafterJump, ctrl_branch, overwriteReg31, isBLT, isBNE, isBEX, isSETX, iFlag, j1Flag, j2Flag, insn, dataRegA, PC);
+    branchControl branch(PCafterJump, ctrl_branch, overwriteReg31, isBLT, isBNE, isBEX, isSETX, iFlag, j1Flag, j2Flag, isLessThan, isNotEqual, insn, dataRegA, PC);
 
 endmodule

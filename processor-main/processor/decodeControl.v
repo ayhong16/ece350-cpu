@@ -23,7 +23,7 @@ module decodeControl(
     assign branchI_readRegB = branchI ? insn[26:22] : 5'b0;
 
     // For bex, read rstatus from ctrl_readRegA
-    assign bexFlag = iFlag & (opcode == 5'b10110);
+    assign bexFlag = j1Flag & (opcode == 5'b10110);
     assign bex_readRegA = 5'b11110;
 
 endmodule

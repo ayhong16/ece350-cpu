@@ -88,11 +88,20 @@ module processor(
     decodeControl decode_stage(ctrl_readRegA, ctrl_readRegB, FD_InstOut);
     interlockDetector detect_interlock(interlock, FD_InstOut, DX_InstOut);
 
+    // bypass into data_readRegA if decode insn is BEX and writeback insn is SETX;
+    wire[4:0] FDopcode, MWopcode;
+    wire[31:0] dataInA;
+    wire BEX_SETX_exception;
+    assign FDopcode = FD_InstOut[31:26];
+    assign MWopcode = MW_InstOut[31:26];
+    assign BEX_SETX_exception = (FDopcode == 5'b10110) && (MWopcode == 5'b10101);
+    assign dataInA = BEX_SETX_exception ? data_writeReg : data_readRegA;
+
     // DX Latch
     wire [31:0] DX_PCout, DX_Aout, DX_Bout, DX_InstOut, DX_branchCheck;
     mux_2 checkDXFlush(DX_branchCheck, ctrl_branch || interlock, FD_InstOut, nop);
     register32 DX_PCreg(.out(DX_PCout), .data(FD_PCout), .clk(~clock), .write_enable(latchWrite), .reset(reset));
-    register32 DX_Areg(.out(DX_Aout), .data(data_readRegA), .clk(~clock), .write_enable(latchWrite), .reset(reset));
+    register32 DX_Areg(.out(DX_Aout), .data(dataInA), .clk(~clock), .write_enable(latchWrite), .reset(reset));
     register32 DX_Breg(.out(DX_Bout), .data(data_readRegB), .clk(~clock), .write_enable(latchWrite), .reset(reset));
     register32 DX_InstReg(.out(DX_InstOut), .data(DX_branchCheck), .clk(~clock), .write_enable(latchWrite), .reset(reset));
 
@@ -100,7 +109,7 @@ module processor(
     wire[31:0] aluOut, executeOut, selectedA, selectedB, AafterJal, aluOpcodeAfterJal, PCsetToTarget;
     wire[4:0] aluOpcode, shamt;
     wire adder_overflow, ctrl_branch, isNotEqual, isLessThan, isMultDiv, isBLT, isBNE, isBEX;
-    executeControl execute_stage(PCsetToTarget, selectedA, selectedB, aluOpcode, shamt, ctrl_branch, isMult, isDiv, isBLT, isBNE, isBEX, bypassA, bypassB, DX_InstOut, DX_PCout, clock);
+    executeControl execute_stage(PCsetToTarget, selectedA, selectedB, aluOpcode, shamt, ctrl_branch, isMult, isDiv, isBLT, isBNE, isBEX, bypassA, bypassB, DX_InstOut, DX_PCout, isLessThan, isNotEqual, clock);
     assign PCAfterJump = ((isBLT & isLessThan) ||(isBNE & isNotEqual) || (isBEX & isNotEqual)) ? aluOut : PCsetToTarget;
 
     // For Jal only: overwrite reg31 with PC+1 and use ALU adder

@@ -33,7 +33,7 @@
  *
  **/
 
-module Wrapper_tb #(parameter FILE = "bex_bypassing");
+module Wrapper_tb #(parameter FILE = "bex_setx");
 
 	// FileData
 	localparam DIR = "Test Files/";

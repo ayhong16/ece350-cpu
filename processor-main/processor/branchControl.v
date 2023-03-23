@@ -1,7 +1,7 @@
 module branchControl(
     output[31:0] PCafterJump,
     output ctrl_branch, overwriteReg31, isBLT, isBNE, isBEX, isSETX,
-    input iFlag, j1Flag, j2Flag,
+    input iFlag, j1Flag, j2Flag, isLessThan, isNotEqual,
     input[31:0] insn, data_readRegA, PC
 );
     wire jumpFlag, jalFlag, jrFlag, comparisonBranchFlag;
@@ -14,7 +14,7 @@ module branchControl(
     assign isBNE = iFlag && (opcode == 5'b00010);
     assign isBEX = j1Flag && (opcode == 5'b10110);
     assign isSETX = j1Flag && (opcode == 5'b10101);
-    assign ctrl_branch = jalFlag || jumpFlag || jrFlag || isBEX; // TODO: extra check for bex, bne, and blt
+    assign ctrl_branch = jalFlag || jumpFlag || jrFlag || (isBEX & isNotEqual) || (isBNE & isNotEqual) || (isBLT & isLessThan); // TODO: extra check for bex, bne, and blt
 
     wire[26:0] target;
     wire[31:0] extendedTarget;
