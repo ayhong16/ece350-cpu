@@ -16,14 +16,14 @@ module executeControl(
 
     // R-type regular adding in ALU
     wire[31:0] selectedB;
-    assign selectedB = rFlag ? dataRegB : ((overwriteReg31 || isBEX) ? 32'b0 : (isSETX ? PCafterJump : immediate));
-    assign selectedA = (overwriteReg31 || compBranchFlag) ? PC : (isSETX ? 32'b0 : dataRegA);
+    assign selectedB = (rFlag || compBranchFlag) ? dataRegB : ((overwriteReg31 || isBEX) ? 32'b0 : (isSETX ? PCafterJump : immediate));
+    assign selectedA = overwriteReg31 ? PC : (isSETX ? 32'b0 : dataRegA);
 
     // I-type sign extension for immediate
     wire[31:0] immediate;
     signExtension17to32 signExtend(immediate, insn[16:0]);
 
     assign compBranchFlag = isBLT || isBNE;
-    branchControl branch(PCafterJump, ctrl_branch, overwriteReg31, isBLT, isBNE, isBEX, isSETX, iFlag, j1Flag, j2Flag, isLessThan, isNotEqual, insn, dataRegA, PC);
+    branchControl branch(PCafterJump, ctrl_branch, overwriteReg31, isBLT, isBNE, isBEX, isSETX, iFlag, j1Flag, j2Flag, isLessThan, isNotEqual, insn, dataRegA, PC, immediate);
 
 endmodule

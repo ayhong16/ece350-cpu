@@ -2,9 +2,9 @@ module branchControl(
     output[31:0] PCafterJump,
     output ctrl_branch, overwriteReg31, isBLT, isBNE, isBEX, isSETX,
     input iFlag, j1Flag, j2Flag, isLessThan, isNotEqual,
-    input[31:0] insn, data_readRegA, PC
+    input[31:0] insn, data_readRegA, PC, immediate
 );
-    wire jumpFlag, jalFlag, jrFlag, comparisonBranchFlag;
+    wire jumpFlag, jalFlag, jrFlag, comparisonBranchFlag, overflow;
     wire[4:0] opcode;
     assign opcode = insn[31:27];
     assign jalFlag = j1Flag && (opcode == 5'b00011);
@@ -17,11 +17,13 @@ module branchControl(
     assign ctrl_branch = jalFlag || jumpFlag || jrFlag || (isBEX & isNotEqual) || (isBNE & isNotEqual) || (isBLT & isLessThan); // TODO: extra check for bex, bne, and blt
 
     wire[26:0] target;
-    wire[31:0] extendedTarget;
+    wire[31:0] extendedTarget, PCafterAdd;
     assign target = insn[26:0];
     signExtension27to32 signExtend(extendedTarget, target);
 
-    assign PCafterJump = jrFlag ? data_readRegA : ((jalFlag || jumpFlag || isBEX || isSETX) ? extendedTarget : PC);
+    cla_adder adder(PCafterAdd, overflow, PC, immediate, 1'b0);
+
+    assign PCafterJump = jrFlag ? data_readRegA : ((jalFlag || jumpFlag || isBEX || isSETX) ? extendedTarget : ((isBLT || isBNE) ? PCafterAdd : PC));
     assign overwriteReg31 = jalFlag;
 
 endmodule

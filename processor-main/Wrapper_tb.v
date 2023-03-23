@@ -33,7 +33,7 @@
  *
  **/
 
-module Wrapper_tb #(parameter FILE = "bex_setx");
+module Wrapper_tb #(parameter FILE = "bne");
 
 	// FileData
 	localparam DIR = "Test Files/";
