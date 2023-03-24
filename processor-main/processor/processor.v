@@ -80,7 +80,7 @@ module processor(
     wire fetch_FD_wren;
     assign fetch_FD_wren = latchWrite && ~interlock;
     mux_2 checkFDflush(FD_branchCheck, ctrl_branch, q_imem, nop);
-    register32 FD_PCreg(FD_PCout, fetch_PC_out, ~clock, fetch_FD_wren, reset);
+    register32 FD_PCreg(FD_PCout, address_imem, ~clock, fetch_FD_wren, reset);
     register32 FD_InstReg(FD_InstOut, FD_branchCheck, ~clock, fetch_FD_wren, reset);
 
     // Decode stage
