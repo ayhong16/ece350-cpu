@@ -112,7 +112,7 @@ module processor(
     executeControl execute_stage(PCAfterJump, selectedA, selectedB, aluOpcode, shamt, ctrl_branch, isMult, isDiv, isBLT, isBNE, isBEX, bypassA, bypassB, DX_InstOut, DX_PCout, isLessThan, isNotEqual, clock);
 
     // For Jal only: overwrite reg31 with PC+1 and use ALU adder
-    wire data_resultRDY, mult_exception, div_exception, isMult, isDiv, ctrlMult, ctrlDiv, disableCtrlSignal;
+    wire data_resultRDY, mult_exception, div_exception, isMult, isDiv, ctrlMult, ctrlDiv, disableCtrlSignal, exceptionIn;
     wire[31:0] multDivResult;
     assign isMultDiv = isMult || isDiv;
     assign executeOut = isMultDiv ? multDivResult : aluOut;
@@ -123,22 +123,27 @@ module processor(
     alu execute(selectedA, selectedB, aluOpcode, shamt, aluOut, isNotEqual, isLessThan, adder_overflow, clock);
     // TODO: deal with data exception in $rstatus
 
+    assign exceptionIn = ((mult_exception || div_exception) && data_resultRDY) | adder_overflow;
     // XM Latch
     wire [31:0] XM_InstOut, XM_Bout;
-    register32 XM_Oreg(.out(address_dmem), .data(executeOut), .clk(~clock), .write_enable(latchWrite), .reset(reset)); // address input to dmem
-    register32 XM_Breg(.out(XM_Bout), .data(DX_Bout), .clk(~clock), .write_enable(latchWrite), .reset(reset)); // data input to dmem
-    register32 XM_InstReg(.out(XM_InstOut), .data(DX_InstOut), .clk(~clock), .write_enable(latchWrite), .reset(reset));
+    wire XM_exceptionOut;
+    register1 XM_errorReg(XM_exceptionOut, exceptionIn, ~clock, latchWrite, reset);
+    register32 XM_Oreg(address_dmem, executeOut, ~clock, latchWrite, reset); // address input to dmem
+    register32 XM_Breg(XM_Bout, DX_Bout, ~clock, latchWrite, reset); // data input to dmem
+    register32 XM_InstReg(XM_InstOut, DX_InstOut, ~clock, latchWrite, reset);
 
     // Memory stage
     memoryControl memory_stage(wren, XM_InstOut);
 
     // MW Latch
     wire [31:0] MW_Oout, MW_Dout, MW_InstOut;
+    wire MW_exceptionOut;
+    register1 MW_errorReg(MW_exceptionOut, XM_exceptionOut, ~clock, latchWrite, reset);
     register32 MW_Oreg(.out(MW_Oout), .data(address_dmem), .clk(~clock), .write_enable(latchWrite), .reset(reset));
     register32 MW_Dreg(.out(MW_Dout), .data(q_dmem), .clk(~clock), .write_enable(latchWrite), .reset(reset));
     register32 MW_InstReg(.out(MW_InstOut), .data(XM_InstOut), .clk(~clock), .write_enable(latchWrite), .reset(reset));
 
     // Writeback stage
-    writebackControl writeback_stage(ctrl_writeEnable, ctrl_writeReg, data_writeReg, MW_Dout, MW_Oout, MW_InstOut);
+    writebackControl writeback_stage(ctrl_writeEnable, ctrl_writeReg, data_writeReg, MW_exceptionOut, MW_Dout, MW_Oout, MW_InstOut);
 
 endmodule

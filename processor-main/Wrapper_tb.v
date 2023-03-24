@@ -33,7 +33,7 @@
  *
  **/
 
-module Wrapper_tb #(parameter FILE = "control_basic");
+module Wrapper_tb #(parameter FILE = "exceptions_with_bypassing");
 
 	// FileData
 	localparam DIR = "Test Files/";
