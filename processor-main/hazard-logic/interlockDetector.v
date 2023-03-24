@@ -3,14 +3,16 @@ module interlockDetector(
     input[31:0] FD_insn, DX_insn
 );
     wire[4:0] DX_IR_OP, FD_IR_RS1, FD_IR_RS2, DX_IR_RD, FD_IR_OP;
-    wire FD_rFlag, FD_iFlag, FD_j1Flag, FD_j2Flag;
+    wire FD_rFlag, FD_iFlag, FD_j1Flag, FD_j2Flag, isBNE, isBLT;
     instructionType parseFD(FD_IR_OP, FD_rFlag, FD_iFlag, FD_j1Flag, FD_j2Flag, FD_insn);
 
     wire DX_rFlag, DX_iFlag, DX_j1Flag, DX_j2Flag;
     instructionType parseDX(DX_IR_OP, DX_rFlag, DX_iFlag, DX_j1Flag, DX_j2Flag, DX_insn);
 
     wire DXhasRD, FDhasRS1, FDhasRS2;
-    assign DXhasRD = DX_rFlag || DX_iFlag || DX_j2Flag;
+    assign isBNE = DX_IR_OP == 5'b00010;
+    assign isBLT = DX_IR_OP == 5'b00110;
+    assign DXhasRD = DX_rFlag || (DX_iFlag && ~isBNE && ~isBLT) || DX_j2Flag;
     assign FDhasRS1 = FD_rFlag || FD_iFlag;
     assign FD_IR_RS1 = FDhasRS1 ? FD_insn[21:17] : 5'b0;
     assign DX_IR_RD = DXhasRD ? DX_insn[26:22] : 5'b0;

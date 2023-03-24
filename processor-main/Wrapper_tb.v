@@ -33,7 +33,7 @@
  *
  **/
 
-module Wrapper_tb #(parameter FILE = "jal");
+module Wrapper_tb #(parameter FILE = "bypassing_into_branching");
 
 	// FileData
 	localparam DIR = "Test Files/";
