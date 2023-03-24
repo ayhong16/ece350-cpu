@@ -1,7 +1,7 @@
 module writebackControl(
     output ctrl_writeEnable,
     output[4:0] ctrl_writeReg,
-    output[31:0] data_writeReg,
+    output[31:0] data_writeReg, exceptionData,
     input exception,
     input[31:0] dataFromDmem, dataFromAlu, insn
 );
@@ -21,11 +21,11 @@ module writebackControl(
     assign ctrl_writeReg = exception ? 5'b11110 : (specifiedWriteReg ? insn[26:22] : (jalFlag ? 5'b11111 : (setxFlag ? 5'b11110 : 5'b0)));
 
     // Overwrite if exception exists
-    wire[31:0] exceptionData, dataFromAluOrRam;
+    wire[31:0] dataFromAluOrRam;
     wire addExceptionFlag, addiExceptionFlag, subExceptionFlag, multExceptionFlag, divExceptionFlag;
     assign aluOpcode = insn[6:2];
     assign addExceptionFlag = rFlag & aluOpcode == 5'b0 & exception;
-    assign addiExceptionFlag = iFlag & opcode == 5'b00101 & exception;
+    assign addiExceptionFlag = addiFlag & exception;
     assign subExceptionFlag = rFlag & aluOpcode == 5'b00001 & exception;
     assign multExceptionFlag = rFlag & aluOpcode == 5'b00110 & exception;
     assign divExceptionFlag = rFlag & aluOpcode == 5'b00111 & exception;

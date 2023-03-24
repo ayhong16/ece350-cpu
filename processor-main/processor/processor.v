@@ -69,7 +69,7 @@ module processor(
 
     // Bypassing
     wire[31:0] bypassA, bypassB;
-    bypassControl bypass(bypassA, bypassB, data, DX_InstOut, XM_InstOut, MW_InstOut, address_dmem, XM_Bout, data_writeReg, DX_Aout, DX_Bout);
+    bypassControl bypass(bypassA, bypassB, data, DX_InstOut, XM_InstOut, MW_InstOut, address_dmem, XM_Bout, data_writeReg, DX_Aout, DX_Bout, XM_exceptionData, MW_exceptionData);
 
     // Fetch stage
     wire [31:0] fetch_PC_out, PCAfterJump;
@@ -125,7 +125,7 @@ module processor(
 
     assign exceptionIn = ((mult_exception || div_exception) && data_resultRDY) | adder_overflow;
     // XM Latch
-    wire [31:0] XM_InstOut, XM_Bout;
+    wire [31:0] XM_InstOut, XM_Bout, XM_exceptionData;
     wire XM_exceptionOut;
     register1 XM_errorReg(XM_exceptionOut, exceptionIn, ~clock, latchWrite, reset);
     register32 XM_Oreg(address_dmem, executeOut, ~clock, latchWrite, reset); // address input to dmem
@@ -133,10 +133,10 @@ module processor(
     register32 XM_InstReg(XM_InstOut, DX_InstOut, ~clock, latchWrite, reset);
 
     // Memory stage
-    memoryControl memory_stage(wren, XM_InstOut);
+    memoryControl memory_stage(wren, XM_exceptionData, XM_exceptionOut, XM_InstOut);
 
     // MW Latch
-    wire [31:0] MW_Oout, MW_Dout, MW_InstOut;
+    wire [31:0] MW_Oout, MW_Dout, MW_InstOut, MW_exceptionData;
     wire MW_exceptionOut;
     register1 MW_errorReg(MW_exceptionOut, XM_exceptionOut, ~clock, latchWrite, reset);
     register32 MW_Oreg(.out(MW_Oout), .data(address_dmem), .clk(~clock), .write_enable(latchWrite), .reset(reset));
@@ -144,6 +144,6 @@ module processor(
     register32 MW_InstReg(.out(MW_InstOut), .data(XM_InstOut), .clk(~clock), .write_enable(latchWrite), .reset(reset));
 
     // Writeback stage
-    writebackControl writeback_stage(ctrl_writeEnable, ctrl_writeReg, data_writeReg, MW_exceptionOut, MW_Dout, MW_Oout, MW_InstOut);
+    writebackControl writeback_stage(ctrl_writeEnable, ctrl_writeReg, data_writeReg, MW_exceptionData, MW_exceptionOut, MW_Dout, MW_Oout, MW_InstOut);
 
 endmodule
