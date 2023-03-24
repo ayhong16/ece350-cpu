@@ -33,7 +33,7 @@
  *
  **/
 
-module Wrapper_tb #(parameter FILE = "memory_basic");
+module Wrapper_tb #(parameter FILE = "control_basic");
 
 	// FileData
 	localparam DIR = "Test Files/";

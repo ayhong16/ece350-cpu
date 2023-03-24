@@ -6,7 +6,7 @@ module executeControl(
     input isLessThan, isNotEqual, clock
 );
 
-    wire rFlag, iFlag, j1Flag, j2Flag, overwriteReg31, compBranchFlag, isSETX;
+    wire rFlag, iFlag, j1Flag, j2Flag, overwriteReg31, compBranchFlag, isSETX, jumpFlag;
     wire[4:0] opcode, jrReg;
     instructionType parse(opcode, rFlag, iFlag, j1Flag, j2Flag, insn);
     assign aluOpcode = rFlag ? insn[6:2] : 5'b0;
@@ -16,7 +16,7 @@ module executeControl(
 
     // R-type regular adding in ALU
     wire[31:0] selectedB;
-    assign selectedB = (rFlag || compBranchFlag) ? dataRegB : ((overwriteReg31 || isBEX) ? 32'b0 : (isSETX ? PCafterJump : immediate));
+    assign selectedB = (rFlag || compBranchFlag) ? dataRegB : ((overwriteReg31 || isBEX || jumpFlag) ? 32'b0 : (isSETX ? PCafterJump : immediate));
     assign selectedA = overwriteReg31 ? PC : (isSETX ? 32'b0 : dataRegA);
 
     // I-type sign extension for immediate
@@ -24,6 +24,6 @@ module executeControl(
     signExtension17to32 signExtend(immediate, insn[16:0]);
 
     assign compBranchFlag = isBLT || isBNE;
-    branchControl branch(PCafterJump, ctrl_branch, overwriteReg31, isBLT, isBNE, isBEX, isSETX, iFlag, j1Flag, j2Flag, isLessThan, isNotEqual, insn, dataRegA, PC, immediate);
+    branchControl branch(PCafterJump, ctrl_branch, overwriteReg31, isBLT, isBNE, isBEX, isSETX, jumpFlag, iFlag, j1Flag, j2Flag, isLessThan, isNotEqual, insn, dataRegA, PC, immediate);
 
 endmodule
