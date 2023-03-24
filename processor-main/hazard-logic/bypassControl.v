@@ -12,16 +12,15 @@ module bypassControl(
     wire MW_rFlag, MW_iFlag, MW_j1Flag, MW_j2Flag, MW_compIFlag;
     instructionType parseMW(MW_IR_OP, MW_rFlag, MW_iFlag, MW_j1Flag, MW_j2Flag, MWinsn);
 
-    wire DXhasRS1, XMhasWriteReg, MWhasWriteReg, XM_swFlag, MW_swFlag, MW_lwFlag;
+    wire DXhasRS1, XMhasWriteReg, MWhasWriteReg, DX_swFlag, XM_swFlag, MW_swFlag;
     assign DX_compIFlag = DX_IR_OP == 5'b00110 || DX_IR_OP == 5'b00010;
     assign XM_compIFlag = XM_IR_OP == 5'b00110 || XM_IR_OP == 5'b00010;
     assign MW_compIFlag = MW_IR_OP == 5'b00110 || MW_IR_OP == 5'b00010;
     assign XM_swFlag = XM_IR_OP == 5'b00111;
     assign MW_swFlag = MW_IR_OP == 5'b00111;
-    assign MW_lwFlag = MW_IR_OP == 5'b01000;
     assign DXhasRS1 = DX_rFlag || (DX_iFlag && ~DX_compIFlag);
-    assign XMhasWriteReg = XM_rFlag || (XM_iFlag && ~XM_compIFlag) || XM_j2Flag;
-    assign MWhasWriteReg = MW_rFlag || (MW_iFlag && ~MW_compIFlag) || MW_j2Flag;
+    assign XMhasWriteReg = XM_rFlag || (XM_iFlag && ~XM_compIFlag && ~XM_swFlag) || XM_j2Flag;
+    assign MWhasWriteReg = MW_rFlag || (MW_iFlag && ~MW_compIFlag && ~MW_swFlag) || MW_j2Flag;
 
     assign DX_IR_RS1 = DXhasRS1 ? DXinsn[21:17] : ((DX_j2Flag || DX_compIFlag) ? DXinsn[26:22] : 5'b0);
     assign DX_IR_RS2 = DX_rFlag ? DXinsn[16:12] : (DX_compIFlag ? DXinsn[21:17] : 5'b0);

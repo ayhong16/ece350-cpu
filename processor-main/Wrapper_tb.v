@@ -33,7 +33,7 @@
  *
  **/
 
-module Wrapper_tb #(parameter FILE = "bypassing_into_branching");
+module Wrapper_tb #(parameter FILE = "memory_basic");
 
 	// FileData
 	localparam DIR = "Test Files/";
