@@ -33,7 +33,7 @@
  *
  **/
 
-module Wrapper_tb #(parameter FILE = "sort");
+module Wrapper_tb #(parameter FILE = "");
 
 	// FileData
 	localparam DIR = "Test Files/";
@@ -55,7 +55,7 @@ module Wrapper_tb #(parameter FILE = "sort");
 	// Wires for Test Harness
 	wire[4:0] rs1_test, rs1_in;
 	reg testMode = 0; 
-	reg[9:0] num_cycles = DEFAULT_CYCLES;
+	reg[31:0] num_cycles = DEFAULT_CYCLES;
 	reg[15*8:0] exp_text;
 	reg null;
 

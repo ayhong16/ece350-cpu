@@ -23,6 +23,8 @@ module interlockDetector(
     assign FD_RS2_Equals_DX_RD = (FD_rFlag && DXhasRD) ? (FD_IR_RS2 == DX_IR_RD): 1'b0;
 
     assign stall = ((DX_IR_OP == 5'b01000) && FD_RS1_Equals_DX_RD) ||
-                    ((FD_IR_OP != 5'b00111) && FD_RS2_Equals_DX_RD);
+                    ((FD_IR_OP != 5'b00111) && FD_RS2_Equals_DX_RD) ||
+                    ((DX_IR_OP == 5'b01000) && DX_insn[26:22] == 5'b11111 && FD_IR_OP == 5'b00100) ||
+                    ((DX_IR_OP == 5'b01000) && FD_IR_OP == 5'b00010 && DX_insn[26:22] == FD_insn[26:22]);
 
 endmodule
