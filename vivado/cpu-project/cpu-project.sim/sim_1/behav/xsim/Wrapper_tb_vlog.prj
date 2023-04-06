@@ -1,0 +1,66 @@
+# compile verilog/system verilog design source files
+verilog xil_defaultlib  \
+"../../../../../../processor-main/processor/PC.v" \
+"../../../../../../processor-main/processor/RAM.v" \
+"../../../../../../processor-main/processor/ROM.v" \
+"../../../../../../alu-main/Adder/adder_8bit.v" \
+"../../../../../../alu-main/ALU_Interface/alu.v" \
+"../../../../../../alu-main/ALU_Interface/alu_op.v" \
+"../../../../../../alu-main/Logic/and32.v" \
+"../../../../../../processor-main/processor/branchControl.v" \
+"../../../../../../regfile-main/Logic/buffer32.v" \
+"../../../../../../processor-main/hazard-logic/bypassControl.v" \
+"../../../../../../alu-main/Adder/cla_adder.v" \
+"../../../../../../alu-main/Adder/comparator_2bit.v" \
+"../../../../../../alu-main/Adder/comparator_32bit.v" \
+"../../../../../../alu-main/Adder/comparator_8bit.v" \
+"../../../../../../multdiv-main/memory/counter64.v" \
+"../../../../../../processor-main/processor/decodeControl.v" \
+"../../../../../../regfile-main/Logic/decoder32.v" \
+"../../../../../../regfile-main/regfile/dffe_ref.v" \
+"../../../../../../multdiv-main/multdiv/div.v" \
+"../../../../../../multdiv-main/multdiv/divControl.v" \
+"../../../../../../processor-main/processor/executeControl.v" \
+"../../../../../../processor-main/processor/fetchControl.v" \
+"../../../../../../alu-main/Adder/full_adder.v" \
+"../../../../../../processor-main/logic/instructionType.v" \
+"../../../../../../processor-main/hazard-logic/interlockDetector.v" \
+"../../../../../../alu-main/Shifter/left_barrel_1.v" \
+"../../../../../../alu-main/Shifter/left_barrel_16.v" \
+"../../../../../../alu-main/Shifter/left_barrel_2.v" \
+"../../../../../../alu-main/Shifter/left_barrel_4.v" \
+"../../../../../../alu-main/Shifter/left_barrel_8.v" \
+"../../../../../../processor-main/processor/memoryControl.v" \
+"../../../../../../multdiv-main/multdiv/mult.v" \
+"../../../../../../multdiv-main/multdiv/multControl.v" \
+"../../../../../../multdiv-main/multdiv/multdiv.v" \
+"../../../../../../alu-main/Logic/mux_1.v" \
+"../../../../../../alu-main/Logic/mux_32.v" \
+"../../../../../../alu-main/Logic/not32.v" \
+"../../../../../../alu-main/Logic/or32.v" \
+"../../../../../../processor-main/processor/processor.v" \
+"../../../../../../multdiv-main/multdiv/productSelector.v" \
+"../../../../../../regfile-main/regfile/regfile.v" \
+"../../../../../../multdiv-main/memory/register1.v" \
+"../../../../../../regfile-main/regfile/register32.v" \
+"../../../../../../multdiv-main/memory/register64.v" \
+"../../../../../../multdiv-main/memory/register65.v" \
+"../../../../../../alu-main/Shifter/right_barrel_1.v" \
+"../../../../../../alu-main/Shifter/right_barrel_16.v" \
+"../../../../../../alu-main/Shifter/right_barrel_2.v" \
+"../../../../../../alu-main/Shifter/right_barrel_4.v" \
+"../../../../../../alu-main/Shifter/right_barrel_8.v" \
+"../../../../../../processor-main/logic/signExtension17to32.v" \
+"../../../../../../processor-main/logic/signExtension27to32.v" \
+"../../../../../../alu-main/Shifter/sll32.v" \
+"../../../../../../alu-main/Shifter/sra32.v" \
+"../../../../../../multdiv-main/memory/tffe_ref.v" \
+"../../../../../../multdiv-main/multdiv/twosComp32.v" \
+"../../../../../../processor-main/processor/writebackControl.v" \
+"../../../../../../processor-main/Wrapper_vivado_tb.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

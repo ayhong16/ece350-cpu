@@ -1,0 +1,10 @@
+Vivado Simulator 2020.1
+Time resolution is 1 ps
+26009509882912812216109331884856010173706
+WARNING: file C:/Users/ayhon/ECE350/ece350-cpu/processor-main/Test Files/C:/Users/ayhon/ECE350/ece350-cpu/processor-main/Verification Files/loop_exp.txt could not be opened
+Couldn't read the expected file.
+Make sure there is a loop_exp.txt file in the "C:/Users/ayhon/ECE350/ece350-cpu/processor-main/Test Files/C:/Users/ayhon/ECE350/ece350-cpu/processor-main/Verification Files/" directory.
+Continuing for 255 cycles without checking for correctness,
+
+
+WARNING: file C:/Users/ayhon/ECE350/ece350-cpu/processor-main/Test Files/C:/Users/ayhon/ECE350/ece350-cpu/processor-main/Output Files/loop_actual.txt could not be opened

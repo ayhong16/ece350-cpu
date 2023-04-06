@@ -1,0 +1,76 @@
+Vivado Simulator 2020.1
+Copyright 1986-1999, 2001-2020 Xilinx, Inc. All Rights Reserved.
+Running: C:/Xilinx/Vivado/2020.1/bin/unwrapped/win64.o/xelab.exe -wto cf6460ed38964e90a3e159ac2dc7db2e --incr --debug typical --relax --mt 2 -L xil_defaultlib -L unisims_ver -L unimacro_ver -L secureip --snapshot Wrapper_tb_behav xil_defaultlib.Wrapper_tb xil_defaultlib.glbl -log elaborate.log 
+Using 2 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/PC.v" Line 1. Module PC doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/PC.v" Line 1. Module PC doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.instructionType
+Compiling module xil_defaultlib.bypassControl
+Compiling module xil_defaultlib.full_adder
+Compiling module xil_defaultlib.adder_8bit
+Compiling module xil_defaultlib.cla_adder
+Compiling module xil_defaultlib.dffe_ref
+Compiling module xil_defaultlib.register32_default
+Compiling module xil_defaultlib.PC
+Compiling module xil_defaultlib.mux_2
+Compiling module xil_defaultlib.fetchControl
+Compiling module xil_defaultlib.decodeControl
+Compiling module xil_defaultlib.interlockDetector
+Compiling module xil_defaultlib.signExtension17to32
+Compiling module xil_defaultlib.signExtension27to32
+Compiling module xil_defaultlib.branchControl
+Compiling module xil_defaultlib.executeControl
+Compiling module xil_defaultlib.register1
+Compiling module xil_defaultlib.tffe_ref
+Compiling module xil_defaultlib.counter64
+Compiling module xil_defaultlib.register65_default
+Compiling module xil_defaultlib.mux2_1
+Compiling module xil_defaultlib.mux4_1
+Compiling module xil_defaultlib.mux8_1
+Compiling module xil_defaultlib.multControl
+Compiling module xil_defaultlib.not32
+Compiling module xil_defaultlib.productSelector
+Compiling module xil_defaultlib.mult
+Compiling module xil_defaultlib.twosComp32
+Compiling module xil_defaultlib.register64_default
+Compiling module xil_defaultlib.divControl
+Compiling module xil_defaultlib.div
+Compiling module xil_defaultlib.multdiv
+Compiling module xil_defaultlib.and32
+Compiling module xil_defaultlib.or32
+Compiling module xil_defaultlib.left_barrel_16
+Compiling module xil_defaultlib.left_barrel_8
+Compiling module xil_defaultlib.left_barrel_4
+Compiling module xil_defaultlib.left_barrel_2
+Compiling module xil_defaultlib.left_barrel_1
+Compiling module xil_defaultlib.sll32
+Compiling module xil_defaultlib.right_barrel_16
+Compiling module xil_defaultlib.right_barrel_8
+Compiling module xil_defaultlib.right_barrel_4
+Compiling module xil_defaultlib.right_barrel_2
+Compiling module xil_defaultlib.right_barrel_1
+Compiling module xil_defaultlib.sra32
+Compiling module xil_defaultlib.comparator_2bit
+Compiling module xil_defaultlib.comparator_8bit
+Compiling module xil_defaultlib.comparator_32bit
+Compiling module xil_defaultlib.mux_4
+Compiling module xil_defaultlib.mux_8
+Compiling module xil_defaultlib.alu_op
+Compiling module xil_defaultlib.alu
+Compiling module xil_defaultlib.memoryControl
+Compiling module xil_defaultlib.writebackControl
+Compiling module xil_defaultlib.processor
+Compiling module xil_defaultlib.ROM(MEMFILE="loop.mem")
+Compiling module xil_defaultlib.decoder32
+Compiling module xil_defaultlib.buffer32
+Compiling module xil_defaultlib.regfile_default
+Compiling module xil_defaultlib.RAM
+Compiling module xil_defaultlib.Wrapper_tb
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot Wrapper_tb_behav

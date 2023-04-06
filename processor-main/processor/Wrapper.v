@@ -24,18 +24,29 @@
  *
  **/
 
-module Wrapper (clock, reset);
-	input clock, reset;
+module Wrapper (
+	output reg[6:0] SEG,
+	output [7:0] AN,
+	input [3:0] SW,
+	input clock, resetIn);
 
 	wire rwe, mwe;
 	wire[4:0] rd, rs1, rs2;
 	wire[31:0] instAddr, instData, 
 		rData, regA, regB,
 		memAddr, memDataIn, memDataOut;
-
+	wire reset = ~resetIn;
 
 	// ADD YOUR MEMORY FILE HERE
-	localparam INSTR_FILE = "";
+	localparam INSTR_FILE = "addi_basic";
+
+	wire [31:0] reg1, reg2, reg3, reg4, reg5, reg6, reg7, reg8, reg9;
+	wire [6:0] segment;
+	segmentDisplay segmentDisplay(.SEG(segment), .reg1(reg1), .reg2(reg2), .reg3(reg3), .reg4(reg4), .reg5(reg5), .reg6(reg6), .reg7(reg7), .reg8(reg8), .reg9(reg9), .SW(SW), .clock(clock));
+	assign AN = 8'b11111110;
+	always @(posedge clock) begin
+		SEG <= segment;
+	end
 	
 	// Main Processing Unit
 	processor CPU(.clock(clock), .reset(reset), 
@@ -63,7 +74,8 @@ module Wrapper (clock, reset);
 		.ctrl_writeEnable(rwe), .ctrl_reset(reset), 
 		.ctrl_writeReg(rd),
 		.ctrl_readRegA(rs1), .ctrl_readRegB(rs2), 
-		.data_writeReg(rData), .data_readRegA(regA), .data_readRegB(regB));
+		.data_writeReg(rData), .data_readRegA(regA), .data_readRegB(regB), 
+		.reg1(reg1), .reg2(reg2), .reg3(reg3), .reg4(reg4), .reg5(reg5), .reg6(reg6), .reg7(reg7), .reg8(reg8), .reg9(reg9));
 						
 	// Processor Memory (RAM)
 	RAM ProcMem(.clk(clock), 

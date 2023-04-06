@@ -1,0 +1,557 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Wed Apr  5 20:29:20 2023
+| Host         : Ashley-Laptop running 64-bit major release  (build 9200)
+| Command      : report_methodology -file Wrapper_methodology_drc_routed.rpt -pb Wrapper_methodology_drc_routed.pb -rpx Wrapper_methodology_drc_routed.rpx
+| Design       : Wrapper
+| Device       : xc7a100tcsg324-1
+| Speed File   : -1
+| Design State : Fully Routed
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Report Methodology
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+             Max violations: <unlimited>
+             Violations found: 97
++-----------+----------+--------------------------------------------+------------+
+| Rule      | Severity | Description                                | Violations |
++-----------+----------+--------------------------------------------+------------+
+| LUTAR-1   | Warning  | LUT drives async reset alert               | 5          |
+| SYNTH-6   | Warning  | Timing of a RAM block might be sub-optimal | 1          |
+| TIMING-16 | Warning  | Large setup violation                      | 79         |
+| TIMING-18 | Warning  | Missing input or output delay              | 12         |
++-----------+----------+--------------------------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+LUTAR-1#1 Warning
+LUT drives async reset alert  
+LUT cell CPU/multDiv/counter/bit0/Tff/q_i_2__7, with 2 or more inputs, drives asynchronous preset/clear pin(s) CPU/disabled/q_reg/CLR. The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+LUTAR-1#2 Warning
+LUT drives async reset alert  
+LUT cell CPU/multDiv/counter/bit3/Tff/q_i_2__6, with 2 or more inputs, drives asynchronous preset/clear pin(s) CPU/multDiv/counter/bit0/Tff/q_reg/CLR,
+CPU/multDiv/counter/bit1/Tff/q_reg/CLR,
+CPU/multDiv/counter/bit2/Tff/q_reg/CLR,
+CPU/multDiv/counter/bit4/Tff/q_reg/CLR,
+CPU/multDiv/counter/bit5/Tff/q_reg/CLR,
+CPU/multDiv/counter/bit3/Tff/q_reg/CLR. The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+LUTAR-1#3 Warning
+LUT drives async reset alert  
+LUT cell CPU/multDiv/counter/bit3/Tff/q_i_2__8, with 2 or more inputs, drives asynchronous preset/clear pin(s) CPU/multDiv/division/afterShift/flip_flop[10]/q_reg/CLR,
+CPU/multDiv/division/afterShift/flip_flop[11]/q_reg/CLR,
+CPU/multDiv/division/afterShift/flip_flop[12]/q_reg/CLR,
+CPU/multDiv/division/afterShift/flip_flop[13]/q_reg/CLR,
+CPU/multDiv/division/afterShift/flip_flop[14]/q_reg/CLR,
+CPU/multDiv/division/afterShift/flip_flop[15]/q_reg/CLR,
+CPU/multDiv/division/afterShift/flip_flop[16]/q_reg/CLR,
+CPU/multDiv/division/afterShift/flip_flop[17]/q_reg/CLR,
+CPU/multDiv/division/afterShift/flip_flop[18]/q_reg/CLR,
+CPU/multDiv/division/afterShift/flip_flop[19]/q_reg/CLR,
+CPU/multDiv/division/afterShift/flip_flop[1]/q_reg/CLR,
+CPU/multDiv/division/afterShift/flip_flop[20]/q_reg/CLR,
+CPU/multDiv/division/afterShift/flip_flop[21]/q_reg/CLR,
+CPU/multDiv/division/afterShift/flip_flop[22]/q_reg/CLR,
+CPU/multDiv/division/afterShift/flip_flop[23]/q_reg/CLR (the first 15 of 65 listed). The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+LUTAR-1#4 Warning
+LUT drives async reset alert  
+LUT cell CPU/multDiv/counter/bit3/Tff/q_i_2__9, with 2 or more inputs, drives asynchronous preset/clear pin(s) CPU/multDiv/multiplication/afterShift/flip_flop[0]/q_reg/CLR,
+CPU/multDiv/multiplication/afterShift/flip_flop[10]/q_reg/CLR,
+CPU/multDiv/multiplication/afterShift/flip_flop[11]/q_reg/CLR,
+CPU/multDiv/multiplication/afterShift/flip_flop[12]/q_reg/CLR,
+CPU/multDiv/multiplication/afterShift/flip_flop[13]/q_reg/CLR,
+CPU/multDiv/multiplication/afterShift/flip_flop[14]/q_reg/CLR,
+CPU/multDiv/multiplication/afterShift/flip_flop[15]/q_reg/CLR,
+CPU/multDiv/multiplication/afterShift/flip_flop[16]/q_reg/CLR,
+CPU/multDiv/multiplication/afterShift/flip_flop[17]/q_reg/CLR,
+CPU/multDiv/multiplication/afterShift/flip_flop[18]/q_reg/CLR,
+CPU/multDiv/multiplication/afterShift/flip_flop[19]/q_reg/CLR,
+CPU/multDiv/multiplication/afterShift/flip_flop[1]/q_reg/CLR,
+CPU/multDiv/multiplication/afterShift/flip_flop[20]/q_reg/CLR,
+CPU/multDiv/multiplication/afterShift/flip_flop[21]/q_reg/CLR,
+CPU/multDiv/multiplication/afterShift/flip_flop[22]/q_reg/CLR (the first 15 of 67 listed). The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+LUTAR-1#5 Warning
+LUT drives async reset alert  
+LUT cell CPU/multDiv/counter/bit3/Tff/q_i_3__4, with 2 or more inputs, drives asynchronous preset/clear pin(s) CPU/multDiv/latchedDivOperationReg/flip_flop/q_reg/CLR,
+CPU/multDiv/latchedMultOperationReg/flip_flop/q_reg/CLR. The LUT may glitch and trigger an unexpected reset, even if it is a properly timed path.
+Related violations: <none>
+
+SYNTH-6#1 Warning
+Timing of a RAM block might be sub-optimal  
+The timing for the instance InstMem/dataOut_reg, implemented as a RAM block, might be sub-optimal as no output register was merged into the block.
+Related violations: <none>
+
+TIMING-16#1 Warning
+Large setup violation  
+There is a large setup violation of -1.000 ns between CPU/multDiv/division/latchedDivisorSign/flip_flop/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/division/afterShift/flip_flop[57]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#2 Warning
+Large setup violation  
+There is a large setup violation of -1.001 ns between CPU/DX_InstReg/flip_flop[0]/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/latchedMultiplicandDividendReg/flip_flop[1]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#3 Warning
+Large setup violation  
+There is a large setup violation of -1.028 ns between CPU/MW_InstReg/flip_flop[27]/q_reg/C (clocked by sys_clk_pin) and RegisterFile/genblk2[17].set_reg/flip_flop[0]/q_reg/CE (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#4 Warning
+Large setup violation  
+There is a large setup violation of -1.028 ns between CPU/MW_InstReg/flip_flop[27]/q_reg/C (clocked by sys_clk_pin) and RegisterFile/genblk2[17].set_reg/flip_flop[12]/q_reg/CE (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#5 Warning
+Large setup violation  
+There is a large setup violation of -1.028 ns between CPU/MW_InstReg/flip_flop[27]/q_reg/C (clocked by sys_clk_pin) and RegisterFile/genblk2[17].set_reg/flip_flop[18]/q_reg/CE (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#6 Warning
+Large setup violation  
+There is a large setup violation of -1.028 ns between CPU/MW_InstReg/flip_flop[27]/q_reg/C (clocked by sys_clk_pin) and RegisterFile/genblk2[17].set_reg/flip_flop[2]/q_reg/CE (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#7 Warning
+Large setup violation  
+There is a large setup violation of -1.043 ns between CPU/DX_InstReg/flip_flop[0]/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/latchedMultiplicandDividendReg/flip_flop[10]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#8 Warning
+Large setup violation  
+There is a large setup violation of -1.047 ns between CPU/DX_InstReg/flip_flop[0]/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/latchedMultiplicandDividendReg/flip_flop[16]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#9 Warning
+Large setup violation  
+There is a large setup violation of -1.069 ns between CPU/MW_InstReg/flip_flop[27]/q_reg/C (clocked by sys_clk_pin) and RegisterFile/genblk2[20].set_reg/flip_flop[11]/q_reg/CE (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#10 Warning
+Large setup violation  
+There is a large setup violation of -1.069 ns between CPU/MW_InstReg/flip_flop[27]/q_reg/C (clocked by sys_clk_pin) and RegisterFile/genblk2[20].set_reg/flip_flop[15]/q_reg/CE (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#11 Warning
+Large setup violation  
+There is a large setup violation of -1.069 ns between CPU/MW_InstReg/flip_flop[27]/q_reg/C (clocked by sys_clk_pin) and RegisterFile/genblk2[20].set_reg/flip_flop[17]/q_reg/CE (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#12 Warning
+Large setup violation  
+There is a large setup violation of -1.069 ns between CPU/MW_InstReg/flip_flop[27]/q_reg/C (clocked by sys_clk_pin) and RegisterFile/genblk2[20].set_reg/flip_flop[6]/q_reg/CE (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#13 Warning
+Large setup violation  
+There is a large setup violation of -1.081 ns between CPU/MW_InstReg/flip_flop[27]/q_reg/C (clocked by sys_clk_pin) and RegisterFile/genblk2[1].set_reg/flip_flop[18]/q_reg/CE (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#14 Warning
+Large setup violation  
+There is a large setup violation of -1.081 ns between CPU/MW_InstReg/flip_flop[27]/q_reg/C (clocked by sys_clk_pin) and RegisterFile/genblk2[1].set_reg/flip_flop[19]/q_reg/CE (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#15 Warning
+Large setup violation  
+There is a large setup violation of -1.081 ns between CPU/MW_InstReg/flip_flop[27]/q_reg/C (clocked by sys_clk_pin) and RegisterFile/genblk2[1].set_reg/flip_flop[20]/q_reg/CE (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#16 Warning
+Large setup violation  
+There is a large setup violation of -1.081 ns between CPU/MW_InstReg/flip_flop[27]/q_reg/C (clocked by sys_clk_pin) and RegisterFile/genblk2[1].set_reg/flip_flop[3]/q_reg/CE (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#17 Warning
+Large setup violation  
+There is a large setup violation of -1.081 ns between CPU/MW_InstReg/flip_flop[27]/q_reg/C (clocked by sys_clk_pin) and RegisterFile/genblk2[1].set_reg/flip_flop[9]/q_reg/CE (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#18 Warning
+Large setup violation  
+There is a large setup violation of -1.084 ns between CPU/MW_InstReg/flip_flop[27]/q_reg/C (clocked by sys_clk_pin) and RegisterFile/genblk2[31].set_reg/flip_flop[11]/q_reg/CE (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#19 Warning
+Large setup violation  
+There is a large setup violation of -1.084 ns between CPU/MW_InstReg/flip_flop[27]/q_reg/C (clocked by sys_clk_pin) and RegisterFile/genblk2[31].set_reg/flip_flop[17]/q_reg/CE (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#20 Warning
+Large setup violation  
+There is a large setup violation of -1.084 ns between CPU/MW_InstReg/flip_flop[27]/q_reg/C (clocked by sys_clk_pin) and RegisterFile/genblk2[31].set_reg/flip_flop[21]/q_reg/CE (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#21 Warning
+Large setup violation  
+There is a large setup violation of -1.084 ns between CPU/MW_InstReg/flip_flop[27]/q_reg/C (clocked by sys_clk_pin) and RegisterFile/genblk2[31].set_reg/flip_flop[6]/q_reg/CE (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#22 Warning
+Large setup violation  
+There is a large setup violation of -1.085 ns between CPU/MW_InstReg/flip_flop[27]/q_reg/C (clocked by sys_clk_pin) and RegisterFile/genblk2[6].set_reg/flip_flop[6]/q_reg/CE (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#23 Warning
+Large setup violation  
+There is a large setup violation of -1.166 ns between CPU/multDiv/division/latchedDivisorSign/flip_flop/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/division/afterShift/flip_flop[50]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#24 Warning
+Large setup violation  
+There is a large setup violation of -1.168 ns between CPU/DX_InstReg/flip_flop[0]/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/latchedMultiplicandDividendReg/flip_flop[5]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#25 Warning
+Large setup violation  
+There is a large setup violation of -1.196 ns between CPU/multDiv/division/latchedDivisorSign/flip_flop/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/division/afterShift/flip_flop[44]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#26 Warning
+Large setup violation  
+There is a large setup violation of -1.198 ns between CPU/DX_InstReg/flip_flop[0]/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/latchedMultiplicandDividendReg/flip_flop[15]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#27 Warning
+Large setup violation  
+There is a large setup violation of -1.202 ns between CPU/multDiv/division/latchedDivisorSign/flip_flop/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/division/afterShift/flip_flop[58]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#28 Warning
+Large setup violation  
+There is a large setup violation of -1.214 ns between CPU/multDiv/division/latchedDivisorSign/flip_flop/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/division/afterShift/flip_flop[49]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#29 Warning
+Large setup violation  
+There is a large setup violation of -1.244 ns between CPU/multDiv/division/latchedDivisorSign/flip_flop/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/division/afterShift/flip_flop[51]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#30 Warning
+Large setup violation  
+There is a large setup violation of -1.258 ns between CPU/DX_InstReg/flip_flop[0]/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/latchedMultiplicandDividendReg/flip_flop[18]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#31 Warning
+Large setup violation  
+There is a large setup violation of -1.377 ns between CPU/DX_InstReg/flip_flop[0]/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/latchedMultiplicandDividendReg/flip_flop[20]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#32 Warning
+Large setup violation  
+There is a large setup violation of -1.439 ns between CPU/DX_InstReg/flip_flop[0]/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/latchedMultiplicandDividendReg/flip_flop[0]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#33 Warning
+Large setup violation  
+There is a large setup violation of -1.611 ns between CPU/multDiv/division/latchedDivisorSign/flip_flop/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/division/afterShift/flip_flop[1]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#34 Warning
+Large setup violation  
+There is a large setup violation of -1.649 ns between CPU/multDiv/division/latchedDivisorSign/flip_flop/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/division/afterShift/flip_flop[59]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#35 Warning
+Large setup violation  
+There is a large setup violation of -1.655 ns between CPU/multDiv/division/latchedDivisorSign/flip_flop/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/division/afterShift/flip_flop[47]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#36 Warning
+Large setup violation  
+There is a large setup violation of -1.657 ns between CPU/multDiv/division/latchedDivisorSign/flip_flop/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/division/afterShift/flip_flop[46]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#37 Warning
+Large setup violation  
+There is a large setup violation of -1.719 ns between CPU/multDiv/division/latchedDivisorSign/flip_flop/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/division/afterShift/flip_flop[52]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#38 Warning
+Large setup violation  
+There is a large setup violation of -1.725 ns between CPU/multDiv/division/latchedDivisorSign/flip_flop/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/division/afterShift/flip_flop[53]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#39 Warning
+Large setup violation  
+There is a large setup violation of -2.138 ns between CPU/multDiv/division/latchedDivisorSign/flip_flop/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/division/afterShift/flip_flop[55]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#40 Warning
+Large setup violation  
+There is a large setup violation of -2.145 ns between CPU/multDiv/division/latchedDivisorSign/flip_flop/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/division/afterShift/flip_flop[56]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#41 Warning
+Large setup violation  
+There is a large setup violation of -2.181 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[19]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[0]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#42 Warning
+Large setup violation  
+There is a large setup violation of -2.249 ns between CPU/multDiv/division/latchedDivisorSign/flip_flop/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/division/afterShift/flip_flop[61]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#43 Warning
+Large setup violation  
+There is a large setup violation of -2.256 ns between CPU/multDiv/division/latchedDivisorSign/flip_flop/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/division/afterShift/flip_flop[60]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#44 Warning
+Large setup violation  
+There is a large setup violation of -2.257 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[19]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[25]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#45 Warning
+Large setup violation  
+There is a large setup violation of -2.267 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[3]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[9]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#46 Warning
+Large setup violation  
+There is a large setup violation of -2.309 ns between CPU/multDiv/division/latchedDivisorSign/flip_flop/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/division/afterShift/flip_flop[54]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#47 Warning
+Large setup violation  
+There is a large setup violation of -2.324 ns between CPU/multDiv/division/latchedDivisorSign/flip_flop/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/division/afterShift/flip_flop[48]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#48 Warning
+Large setup violation  
+There is a large setup violation of -2.339 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[3]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[21]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#49 Warning
+Large setup violation  
+There is a large setup violation of -2.355 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[19]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[10]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#50 Warning
+Large setup violation  
+There is a large setup violation of -2.358 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[3]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[4]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#51 Warning
+Large setup violation  
+There is a large setup violation of -2.524 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[3]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[1]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#52 Warning
+Large setup violation  
+There is a large setup violation of -2.558 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[19]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[29]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#53 Warning
+Large setup violation  
+There is a large setup violation of -2.572 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[19]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[30]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#54 Warning
+Large setup violation  
+There is a large setup violation of -2.603 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[3]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[17]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#55 Warning
+Large setup violation  
+There is a large setup violation of -2.607 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[19]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[27]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#56 Warning
+Large setup violation  
+There is a large setup violation of -2.614 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[19]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[3]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#57 Warning
+Large setup violation  
+There is a large setup violation of -2.635 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[3]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[26]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#58 Warning
+Large setup violation  
+There is a large setup violation of -2.637 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[3]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[13]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#59 Warning
+Large setup violation  
+There is a large setup violation of -2.730 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[19]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[11]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#60 Warning
+Large setup violation  
+There is a large setup violation of -2.738 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[19]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[6]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#61 Warning
+Large setup violation  
+There is a large setup violation of -2.861 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[19]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[2]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#62 Warning
+Large setup violation  
+There is a large setup violation of -2.943 ns between CPU/multDiv/division/latchedDivisorSign/flip_flop/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/division/afterShift/flip_flop[62]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#63 Warning
+Large setup violation  
+There is a large setup violation of -2.968 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[3]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[12]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#64 Warning
+Large setup violation  
+There is a large setup violation of -2.978 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[19]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[20]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#65 Warning
+Large setup violation  
+There is a large setup violation of -3.001 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[19]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[7]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#66 Warning
+Large setup violation  
+There is a large setup violation of -3.020 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[19]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[23]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#67 Warning
+Large setup violation  
+There is a large setup violation of -3.024 ns between CPU/multDiv/division/latchedDivisorSign/flip_flop/q_reg/C (clocked by sys_clk_pin) and CPU/multDiv/division/afterShift/flip_flop[63]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#68 Warning
+Large setup violation  
+There is a large setup violation of -3.043 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[3]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[22]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#69 Warning
+Large setup violation  
+There is a large setup violation of -3.079 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[3]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[19]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#70 Warning
+Large setup violation  
+There is a large setup violation of -3.082 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[19]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[16]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#71 Warning
+Large setup violation  
+There is a large setup violation of -3.178 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[3]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[31]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#72 Warning
+Large setup violation  
+There is a large setup violation of -3.207 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[19]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[15]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#73 Warning
+Large setup violation  
+There is a large setup violation of -3.208 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[19]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[5]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#74 Warning
+Large setup violation  
+There is a large setup violation of -3.263 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[19]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[28]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#75 Warning
+Large setup violation  
+There is a large setup violation of -3.310 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[19]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[8]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#76 Warning
+Large setup violation  
+There is a large setup violation of -3.444 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[3]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[18]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#77 Warning
+Large setup violation  
+There is a large setup violation of -3.460 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[19]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[14]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#78 Warning
+Large setup violation  
+There is a large setup violation of -3.518 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[19]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_Oreg/flip_flop[24]/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-16#79 Warning
+Large setup violation  
+There is a large setup violation of -4.853 ns between CPU/multDiv/latchedMultiplierDivisorReg/flip_flop[19]/q_reg/C (clocked by sys_clk_pin) and CPU/XM_errorReg/flip_flop/q_reg/D (clocked by sys_clk_pin). Large setup violations at the end of those stages might be difficult to fix during the post-placement implementation flow and could be the result of non-optimal XDC constraints or non-optimal design architecture
+Related violations: <none>
+
+TIMING-18#1 Warning
+Missing input or output delay  
+An input delay is missing on SW[0] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#2 Warning
+Missing input or output delay  
+An input delay is missing on SW[1] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#3 Warning
+Missing input or output delay  
+An input delay is missing on SW[2] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#4 Warning
+Missing input or output delay  
+An input delay is missing on SW[3] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#5 Warning
+Missing input or output delay  
+An input delay is missing on resetIn relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#6 Warning
+Missing input or output delay  
+An output delay is missing on SEG[0] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#7 Warning
+Missing input or output delay  
+An output delay is missing on SEG[1] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#8 Warning
+Missing input or output delay  
+An output delay is missing on SEG[2] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#9 Warning
+Missing input or output delay  
+An output delay is missing on SEG[3] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#10 Warning
+Missing input or output delay  
+An output delay is missing on SEG[4] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#11 Warning
+Missing input or output delay  
+An output delay is missing on SEG[5] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+TIMING-18#12 Warning
+Missing input or output delay  
+An output delay is missing on SEG[6] relative to clock(s) sys_clk_pin
+Related violations: <none>
+
+

@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Webtalk v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Wed Apr  5 18:03:49 2023
+# Process ID: 21196
+# Current directory: C:/Users/ayhon/ECE350/ece350-cpu/vivado/cpu-project/cpu-project.sim/sim_1/behav/xsim
+# Command line: wbtcv.exe -mode batch -source C:/Users/ayhon/ECE350/ece350-cpu/vivado/cpu-project/cpu-project.sim/sim_1/behav/xsim/xsim.dir/Wrapper_tb_behav/webtalk/xsim_webtalk.tcl -notrace
+# Log file: C:/Users/ayhon/ECE350/ece350-cpu/vivado/cpu-project/cpu-project.sim/sim_1/behav/xsim/webtalk.log
+# Journal file: C:/Users/ayhon/ECE350/ece350-cpu/vivado/cpu-project/cpu-project.sim/sim_1/behav/xsim\webtalk.jou
+#-----------------------------------------------------------
+source C:/Users/ayhon/ECE350/ece350-cpu/vivado/cpu-project/cpu-project.sim/sim_1/behav/xsim/xsim.dir/Wrapper_tb_behav/webtalk/xsim_webtalk.tcl -notrace

@@ -1,0 +1,426 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Wed Apr  5 20:26:47 2023
+# Process ID: 7144
+# Current directory: C:/Users/ayhon/ECE350/ece350-cpu/vivado/cpu-project/cpu-project.runs/synth_1
+# Command line: vivado.exe -log Wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Wrapper.tcl
+# Log file: C:/Users/ayhon/ECE350/ece350-cpu/vivado/cpu-project/cpu-project.runs/synth_1/Wrapper.vds
+# Journal file: C:/Users/ayhon/ECE350/ece350-cpu/vivado/cpu-project/cpu-project.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source Wrapper.tcl -notrace
+Command: synth_design -top Wrapper -part xc7a100tcsg324-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a100t'
+INFO: [Device 21-403] Loading part xc7a100tcsg324-1
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 24656
+WARNING: [Synth 8-2611] redeclaration of ansi port resultReady is not allowed [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/div.v:11]
+WARNING: [Synth 8-2611] redeclaration of ansi port selectedB is not allowed [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/executeControl.v:18]
+WARNING: [Synth 8-6901] identifier 'immediate' is used before its declaration [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/executeControl.v:19]
+WARNING: [Synth 8-992] resetCounter is already implicitly declared earlier [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/multdiv.v:38]
+WARNING: [Synth 8-6901] identifier 'resetCounter' is used before its declaration [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/multdiv.v:14]
+WARNING: [Synth 8-6901] identifier 'multReady' is used before its declaration [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/multdiv.v:40]
+WARNING: [Synth 8-6901] identifier 'divReady' is used before its declaration [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/multdiv.v:40]
+WARNING: [Synth 8-6901] identifier 'multResetCounter' is used before its declaration [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/multdiv.v:41]
+WARNING: [Synth 8-6901] identifier 'divResetCounter' is used before its declaration [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/multdiv.v:41]
+WARNING: [Synth 8-992] fetch_FD_wren is already implicitly declared earlier [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:80]
+WARNING: [Synth 8-992] DX_Aout is already implicitly declared earlier [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:101]
+WARNING: [Synth 8-992] DX_Bout is already implicitly declared earlier [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:101]
+WARNING: [Synth 8-992] DX_InstOut is already implicitly declared earlier [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:101]
+WARNING: [Synth 8-992] ctrl_branch is already implicitly declared earlier [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:111]
+WARNING: [Synth 8-992] isMult is already implicitly declared earlier [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:115]
+WARNING: [Synth 8-992] isDiv is already implicitly declared earlier [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:115]
+WARNING: [Synth 8-992] XM_InstOut is already implicitly declared earlier [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:128]
+WARNING: [Synth 8-992] XM_Bout is already implicitly declared earlier [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:128]
+WARNING: [Synth 8-992] XM_exceptionData is already implicitly declared earlier [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:128]
+WARNING: [Synth 8-992] MW_InstOut is already implicitly declared earlier [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:139]
+WARNING: [Synth 8-992] MW_exceptionData is already implicitly declared earlier [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:139]
+WARNING: [Synth 8-6901] identifier 'isMultDiv' is used before its declaration [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:68]
+WARNING: [Synth 8-6901] identifier 'data_resultRDY' is used before its declaration [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:68]
+WARNING: [Synth 8-6901] identifier 'interlock' is used before its declaration [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:81]
+WARNING: [Synth 8-6901] identifier 'registers' is used before its declaration [C:/Users/ayhon/ECE350/ece350-cpu/regfile-main/regfile/regfile.v:13]
+WARNING: [Synth 8-6901] identifier 'registers' is used before its declaration [C:/Users/ayhon/ECE350/ece350-cpu/regfile-main/regfile/regfile.v:14]
+WARNING: [Synth 8-6901] identifier 'registers' is used before its declaration [C:/Users/ayhon/ECE350/ece350-cpu/regfile-main/regfile/regfile.v:15]
+WARNING: [Synth 8-6901] identifier 'registers' is used before its declaration [C:/Users/ayhon/ECE350/ece350-cpu/regfile-main/regfile/regfile.v:16]
+WARNING: [Synth 8-6901] identifier 'registers' is used before its declaration [C:/Users/ayhon/ECE350/ece350-cpu/regfile-main/regfile/regfile.v:17]
+WARNING: [Synth 8-6901] identifier 'registers' is used before its declaration [C:/Users/ayhon/ECE350/ece350-cpu/regfile-main/regfile/regfile.v:18]
+WARNING: [Synth 8-6901] identifier 'registers' is used before its declaration [C:/Users/ayhon/ECE350/ece350-cpu/regfile-main/regfile/regfile.v:19]
+WARNING: [Synth 8-6901] identifier 'registers' is used before its declaration [C:/Users/ayhon/ECE350/ece350-cpu/regfile-main/regfile/regfile.v:20]
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 1017.293 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'Wrapper' [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/Wrapper.v:27]
+	Parameter INSTR_FILE bound to: addi_basic - type: string 
+INFO: [Synth 8-6157] synthesizing module 'segmentDisplay' [C:/Users/ayhon/ECE350/ece350-cpu/IO/segmentDisplay.v:1]
+	Parameter SEGMENT0 bound to: 7'b1000000 
+	Parameter SEGMENT1 bound to: 7'b1111001 
+	Parameter SEGMENT2 bound to: 7'b0100100 
+	Parameter SEGMENT3 bound to: 7'b0110000 
+	Parameter SEGMENT4 bound to: 7'b0011001 
+	Parameter SEGMENT5 bound to: 7'b0010010 
+	Parameter SEGMENT6 bound to: 7'b0000010 
+	Parameter SEGMENT7 bound to: 7'b1111000 
+	Parameter SEGMENT8 bound to: 7'b0000000 
+	Parameter SEGMENT9 bound to: 7'b0010000 
+	Parameter SEGMENTBROKEN bound to: 7'b1110111 
+INFO: [Synth 8-6155] done synthesizing module 'segmentDisplay' (1#1) [C:/Users/ayhon/ECE350/ece350-cpu/IO/segmentDisplay.v:1]
+INFO: [Synth 8-6157] synthesizing module 'processor' [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:20]
+INFO: [Synth 8-6157] synthesizing module 'bypassControl' [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/hazard-logic/bypassControl.v:1]
+INFO: [Synth 8-6157] synthesizing module 'instructionType' [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/logic/instructionType.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'instructionType' (2#1) [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/logic/instructionType.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'bypassControl' (3#1) [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/hazard-logic/bypassControl.v:1]
+INFO: [Synth 8-6157] synthesizing module 'fetchControl' [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/fetchControl.v:1]
+INFO: [Synth 8-6157] synthesizing module 'cla_adder' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Adder/cla_adder.v:1]
+INFO: [Synth 8-6157] synthesizing module 'adder_8bit' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Adder/adder_8bit.v:1]
+INFO: [Synth 8-6157] synthesizing module 'full_adder' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Adder/full_adder.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'full_adder' (4#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Adder/full_adder.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'adder_8bit' (5#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Adder/adder_8bit.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'cla_adder' (6#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Adder/cla_adder.v:1]
+INFO: [Synth 8-6157] synthesizing module 'PC' [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/PC.v:1]
+INFO: [Synth 8-6157] synthesizing module 'register32' [C:/Users/ayhon/ECE350/ece350-cpu/regfile-main/regfile/register32.v:1]
+INFO: [Synth 8-6157] synthesizing module 'dffe_ref' [C:/Users/ayhon/ECE350/ece350-cpu/regfile-main/regfile/dffe_ref.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'dffe_ref' (7#1) [C:/Users/ayhon/ECE350/ece350-cpu/regfile-main/regfile/dffe_ref.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'register32' (8#1) [C:/Users/ayhon/ECE350/ece350-cpu/regfile-main/regfile/register32.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'PC' (9#1) [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/PC.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mux_2' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Logic/mux_32.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'mux_2' (10#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Logic/mux_32.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'fetchControl' (11#1) [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/fetchControl.v:1]
+INFO: [Synth 8-6157] synthesizing module 'decodeControl' [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/decodeControl.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'decodeControl' (12#1) [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/decodeControl.v:1]
+INFO: [Synth 8-6157] synthesizing module 'interlockDetector' [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/hazard-logic/interlockDetector.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'interlockDetector' (13#1) [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/hazard-logic/interlockDetector.v:1]
+INFO: [Synth 8-6157] synthesizing module 'executeControl' [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/executeControl.v:1]
+INFO: [Synth 8-6157] synthesizing module 'signExtension17to32' [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/logic/signExtension17to32.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'signExtension17to32' (14#1) [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/logic/signExtension17to32.v:1]
+INFO: [Synth 8-6157] synthesizing module 'branchControl' [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/branchControl.v:1]
+INFO: [Synth 8-6157] synthesizing module 'signExtension27to32' [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/logic/signExtension27to32.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'signExtension27to32' (15#1) [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/logic/signExtension27to32.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'branchControl' (16#1) [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/branchControl.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'executeControl' (17#1) [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/executeControl.v:1]
+INFO: [Synth 8-6157] synthesizing module 'multdiv' [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/multdiv.v:1]
+INFO: [Synth 8-6157] synthesizing module 'register1' [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/memory/register1.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'register1' (18#1) [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/memory/register1.v:1]
+INFO: [Synth 8-6157] synthesizing module 'counter64' [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/memory/counter64.v:1]
+INFO: [Synth 8-6157] synthesizing module 'tffe_ref' [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/memory/tffe_ref.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'tffe_ref' (19#1) [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/memory/tffe_ref.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'counter64' (20#1) [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/memory/counter64.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mult' [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/mult.v:1]
+INFO: [Synth 8-6157] synthesizing module 'register65' [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/memory/register65.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'register65' (21#1) [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/memory/register65.v:1]
+INFO: [Synth 8-6157] synthesizing module 'multControl' [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/multControl.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mux8_1' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Logic/mux_1.v:18]
+INFO: [Synth 8-6157] synthesizing module 'mux4_1' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Logic/mux_1.v:8]
+INFO: [Synth 8-6157] synthesizing module 'mux2_1' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Logic/mux_1.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'mux2_1' (22#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Logic/mux_1.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'mux4_1' (23#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Logic/mux_1.v:8]
+INFO: [Synth 8-6155] done synthesizing module 'mux8_1' (24#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Logic/mux_1.v:18]
+INFO: [Synth 8-6155] done synthesizing module 'multControl' (25#1) [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/multControl.v:1]
+INFO: [Synth 8-6157] synthesizing module 'productSelector' [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/productSelector.v:1]
+INFO: [Synth 8-6157] synthesizing module 'not32' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Logic/not32.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'not32' (26#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Logic/not32.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'productSelector' (27#1) [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/productSelector.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'mult' (28#1) [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/mult.v:1]
+INFO: [Synth 8-6157] synthesizing module 'div' [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/div.v:1]
+INFO: [Synth 8-6157] synthesizing module 'twosComp32' [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/twosComp32.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'twosComp32' (29#1) [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/twosComp32.v:1]
+INFO: [Synth 8-6157] synthesizing module 'register64' [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/memory/register64.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'register64' (30#1) [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/memory/register64.v:1]
+INFO: [Synth 8-6157] synthesizing module 'divControl' [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/divControl.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'divControl' (31#1) [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/divControl.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'div' (32#1) [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/div.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'multdiv' (33#1) [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/multdiv.v:1]
+INFO: [Synth 8-6157] synthesizing module 'alu' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/ALU_Interface/alu.v:1]
+INFO: [Synth 8-6157] synthesizing module 'and32' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Logic/and32.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'and32' (34#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Logic/and32.v:1]
+INFO: [Synth 8-6157] synthesizing module 'or32' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Logic/or32.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'or32' (35#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Logic/or32.v:1]
+INFO: [Synth 8-6157] synthesizing module 'sll32' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/sll32.v:1]
+INFO: [Synth 8-6157] synthesizing module 'left_barrel_16' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/left_barrel_16.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'left_barrel_16' (36#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/left_barrel_16.v:1]
+INFO: [Synth 8-6157] synthesizing module 'left_barrel_8' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/left_barrel_8.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'left_barrel_8' (37#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/left_barrel_8.v:1]
+INFO: [Synth 8-6157] synthesizing module 'left_barrel_4' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/left_barrel_4.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'left_barrel_4' (38#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/left_barrel_4.v:1]
+INFO: [Synth 8-6157] synthesizing module 'left_barrel_2' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/left_barrel_2.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'left_barrel_2' (39#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/left_barrel_2.v:1]
+INFO: [Synth 8-6157] synthesizing module 'left_barrel_1' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/left_barrel_1.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'left_barrel_1' (40#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/left_barrel_1.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'sll32' (41#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/sll32.v:1]
+INFO: [Synth 8-6157] synthesizing module 'sra32' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/sra32.v:1]
+INFO: [Synth 8-6157] synthesizing module 'right_barrel_16' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/right_barrel_16.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'right_barrel_16' (42#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/right_barrel_16.v:1]
+INFO: [Synth 8-6157] synthesizing module 'right_barrel_8' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/right_barrel_8.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'right_barrel_8' (43#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/right_barrel_8.v:1]
+INFO: [Synth 8-6157] synthesizing module 'right_barrel_4' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/right_barrel_4.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'right_barrel_4' (44#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/right_barrel_4.v:1]
+INFO: [Synth 8-6157] synthesizing module 'right_barrel_2' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/right_barrel_2.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'right_barrel_2' (45#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/right_barrel_2.v:1]
+INFO: [Synth 8-6157] synthesizing module 'right_barrel_1' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/right_barrel_1.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'right_barrel_1' (46#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/right_barrel_1.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'sra32' (47#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/sra32.v:1]
+INFO: [Synth 8-6157] synthesizing module 'comparator_32bit' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Adder/comparator_32bit.v:1]
+INFO: [Synth 8-6157] synthesizing module 'comparator_8bit' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Adder/comparator_8bit.v:1]
+INFO: [Synth 8-6157] synthesizing module 'comparator_2bit' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Adder/comparator_2bit.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'comparator_2bit' (48#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Adder/comparator_2bit.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'comparator_8bit' (49#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Adder/comparator_8bit.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'comparator_32bit' (50#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Adder/comparator_32bit.v:1]
+INFO: [Synth 8-6157] synthesizing module 'alu_op' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/ALU_Interface/alu_op.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mux_8' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Logic/mux_32.v:18]
+INFO: [Synth 8-6157] synthesizing module 'mux_4' [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Logic/mux_32.v:8]
+INFO: [Synth 8-6155] done synthesizing module 'mux_4' (51#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Logic/mux_32.v:8]
+INFO: [Synth 8-6155] done synthesizing module 'mux_8' (52#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Logic/mux_32.v:18]
+INFO: [Synth 8-6155] done synthesizing module 'alu_op' (53#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/ALU_Interface/alu_op.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'alu' (54#1) [C:/Users/ayhon/ECE350/ece350-cpu/alu-main/ALU_Interface/alu.v:1]
+INFO: [Synth 8-6157] synthesizing module 'memoryControl' [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/memoryControl.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'memoryControl' (55#1) [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/memoryControl.v:1]
+INFO: [Synth 8-6157] synthesizing module 'writebackControl' [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/writebackControl.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'writebackControl' (56#1) [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/writebackControl.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'processor' (57#1) [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:20]
+INFO: [Synth 8-6157] synthesizing module 'ROM' [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/ROM.v:2]
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter ADDRESS_WIDTH bound to: 12 - type: integer 
+	Parameter DEPTH bound to: 4096 - type: integer 
+	Parameter MEMFILE bound to: 112'b0110000101100100011001000110100101011111011000100110000101110011011010010110001100101110011011010110010101101101 
+INFO: [Synth 8-3876] $readmem data file 'addi_basic.mem' is read successfully [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/ROM.v:11]
+INFO: [Synth 8-6155] done synthesizing module 'ROM' (58#1) [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/ROM.v:2]
+INFO: [Synth 8-6157] synthesizing module 'regfile' [C:/Users/ayhon/ECE350/ece350-cpu/regfile-main/regfile/regfile.v:1]
+INFO: [Synth 8-6157] synthesizing module 'buffer32' [C:/Users/ayhon/ECE350/ece350-cpu/regfile-main/Logic/buffer32.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'buffer32' (59#1) [C:/Users/ayhon/ECE350/ece350-cpu/regfile-main/Logic/buffer32.v:1]
+INFO: [Synth 8-6157] synthesizing module 'decoder32' [C:/Users/ayhon/ECE350/ece350-cpu/regfile-main/Logic/decoder32.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'decoder32' (60#1) [C:/Users/ayhon/ECE350/ece350-cpu/regfile-main/Logic/decoder32.v:1]
+INFO: [Synth 8-6155] done synthesizing module 'regfile' (61#1) [C:/Users/ayhon/ECE350/ece350-cpu/regfile-main/regfile/regfile.v:1]
+INFO: [Synth 8-6157] synthesizing module 'RAM' [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/RAM.v:2]
+	Parameter DATA_WIDTH bound to: 32 - type: integer 
+	Parameter ADDRESS_WIDTH bound to: 12 - type: integer 
+	Parameter DEPTH bound to: 4096 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'RAM' (62#1) [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/RAM.v:2]
+INFO: [Synth 8-6155] done synthesizing module 'Wrapper' (63#1) [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/Wrapper.v:27]
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1017.293 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1017.293 ; gain = 0.000
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 1017.293 ; gain = 0.000
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.131 . Memory (MB): peak = 1017.293 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [C:/Users/ayhon/ECE350/ece350-32bit-cpu/vivado/vivado.srcs/constrs_1/imports/lab-3-master/master.xdc]
+Finished Parsing XDC File [C:/Users/ayhon/ECE350/ece350-32bit-cpu/vivado/vivado.srcs/constrs_1/imports/lab-3-master/master.xdc]
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/ayhon/ECE350/ece350-32bit-cpu/vivado/vivado.srcs/constrs_1/imports/lab-3-master/master.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Wrapper_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/Wrapper_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.008 . Memory (MB): peak = 1058.426 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.025 . Memory (MB): peak = 1058.426 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1058.426 ; gain = 41.133
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7a100tcsg324-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1058.426 ; gain = 41.133
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 1058.426 ; gain = 41.133
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 1058.426 ; gain = 41.133
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---XORs : 
+	   3 Input      1 Bit         XORs := 288   
++---Registers : 
+	               32 Bit    Registers := 2     
+	                7 Bit    Registers := 3     
+	                1 Bit    Registers := 1646  
++---RAMs : 
+	             128K Bit	(4096 X 32 bit)          RAMs := 1     
++---ROMs : 
+	                    ROMs := 1     
++---Muxes : 
+	   2 Input   65 Bit        Muxes := 2     
+	   2 Input   64 Bit        Muxes := 1     
+	   2 Input   32 Bit        Muxes := 43    
+	   2 Input    7 Bit        Muxes := 3     
+	   6 Input    7 Bit        Muxes := 1     
+	  10 Input    7 Bit        Muxes := 1     
+	   2 Input    5 Bit        Muxes := 11    
+	   5 Input    5 Bit        Muxes := 2     
+	   6 Input    3 Bit        Muxes := 2     
+	   2 Input    1 Bit        Muxes := 246   
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 240 (col length:80)
+BRAMs: 270 (col length: RAMB18 80 RAMB36 40)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin O with 1st driver pin 'CPU/multDiv/i_0/division/resultReady02_out/O' [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/div.v:11]
+CRITICAL WARNING: [Synth 8-6859] multi-driven net on pin O with 2nd driver pin 'GND' [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/div.v:11]
+CRITICAL WARNING: [Synth 8-6858] multi-driven net O is connected to at least one constant driver which has been preserved, other driver is ignored [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/div.v:11]
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:30 ; elapsed = 00:00:32 . Memory (MB): peak = 1058.426 ; gain = 41.133
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+ROM: Preliminary Mapping	Report
++------------+---------------------+---------------+----------------+
+|Module Name | RTL Object          | Depth x Width | Implemented As | 
++------------+---------------------+---------------+----------------+
+|Wrapper     | InstMem/dataOut_reg | 4096x7        | Block RAM      | 
++------------+---------------------+---------------+----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:35 ; elapsed = 00:00:37 . Memory (MB): peak = 1058.426 ; gain = 41.133
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:41 ; elapsed = 00:00:43 . Memory (MB): peak = 1163.785 ; gain = 146.492
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance InstMem/dataOut_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:42 ; elapsed = 00:00:44 . Memory (MB): peak = 1173.855 ; gain = 156.562
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 1173.855 ; gain = 156.562
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 1173.855 ; gain = 156.562
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:44 ; elapsed = 00:00:47 . Memory (MB): peak = 1173.855 ; gain = 156.562
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:44 ; elapsed = 00:00:47 . Memory (MB): peak = 1173.855 ; gain = 156.562
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:44 ; elapsed = 00:00:47 . Memory (MB): peak = 1173.855 ; gain = 156.562
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:44 ; elapsed = 00:00:47 . Memory (MB): peak = 1173.855 ; gain = 156.562
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BUFG     |     1|
+|2     |LUT1     |     9|
+|3     |LUT2     |   189|
+|4     |LUT3     |   126|
+|5     |LUT4     |   143|
+|6     |LUT5     |   251|
+|7     |LUT6     |  1172|
+|8     |MUXF7    |    36|
+|9     |RAMB36E1 |     1|
+|10    |FDCE     |  1299|
+|11    |FDRE     |   110|
+|12    |IBUF     |     6|
+|13    |OBUF     |    15|
++------+---------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:44 ; elapsed = 00:00:47 . Memory (MB): peak = 1173.855 ; gain = 156.562
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 3 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:38 ; elapsed = 00:00:44 . Memory (MB): peak = 1173.855 ; gain = 115.430
+Synthesis Optimization Complete : Time (s): cpu = 00:00:45 ; elapsed = 00:00:47 . Memory (MB): peak = 1173.855 ; gain = 156.562
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.067 . Memory (MB): peak = 1173.855 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 37 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.003 . Memory (MB): peak = 1173.855 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Common 17-83] Releasing license: Synthesis
+143 Infos, 32 Warnings, 3 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:49 ; elapsed = 00:00:52 . Memory (MB): peak = 1173.855 ; gain = 156.562
+INFO: [Common 17-1381] The checkpoint 'C:/Users/ayhon/ECE350/ece350-cpu/vivado/cpu-project/cpu-project.runs/synth_1/Wrapper.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file Wrapper_utilization_synth.rpt -pb Wrapper_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Apr  5 20:27:42 2023...

@@ -1,0 +1,16 @@
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
+|       Launch Clock       |      Capture Clock       |                                                 Pin                                                      |
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+
+|              sys_clk_pin |              sys_clk_pin |                                                     CPU/multDiv/division/afterShift/flip_flop[63]/q_reg/D|
+|              sys_clk_pin |              sys_clk_pin |                                                     CPU/multDiv/division/afterShift/flip_flop[55]/q_reg/D|
+|              sys_clk_pin |              sys_clk_pin |                                                     CPU/multDiv/division/afterShift/flip_flop[54]/q_reg/D|
+|              sys_clk_pin |              sys_clk_pin |                                                     CPU/multDiv/division/afterShift/flip_flop[56]/q_reg/D|
+|              sys_clk_pin |              sys_clk_pin |                                                     CPU/multDiv/division/afterShift/flip_flop[53]/q_reg/D|
+|              sys_clk_pin |              sys_clk_pin |                                                     CPU/multDiv/division/afterShift/flip_flop[52]/q_reg/D|
+|              sys_clk_pin |              sys_clk_pin |                                                     CPU/multDiv/division/afterShift/flip_flop[46]/q_reg/D|
+|              sys_clk_pin |              sys_clk_pin |                                                     CPU/multDiv/division/afterShift/flip_flop[58]/q_reg/D|
+|              sys_clk_pin |              sys_clk_pin |                                                     CPU/multDiv/division/afterShift/flip_flop[44]/q_reg/D|
+|              sys_clk_pin |              sys_clk_pin |                                                     CPU/multDiv/division/afterShift/flip_flop[57]/q_reg/D|
+|              sys_clk_pin |              sys_clk_pin |                                                     CPU/multDiv/division/afterShift/flip_flop[43]/q_reg/D|
+|              sys_clk_pin |              sys_clk_pin |                                                     CPU/multDiv/division/afterShift/flip_flop[38]/q_reg/D|
++--------------------------+--------------------------+----------------------------------------------------------------------------------------------------------+

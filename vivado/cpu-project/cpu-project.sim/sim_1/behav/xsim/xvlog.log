@@ -1,0 +1,152 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/PC.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module PC
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/RAM.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module RAM
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/ROM.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module ROM
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Adder/adder_8bit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module adder_8bit
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/alu-main/ALU_Interface/alu.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module alu
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/alu-main/ALU_Interface/alu_op.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module alu_op
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Logic/and32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module and32
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/branchControl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module branchControl
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/regfile-main/Logic/buffer32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module buffer32
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/processor-main/hazard-logic/bypassControl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module bypassControl
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Adder/cla_adder.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module cla_adder
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Adder/comparator_2bit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module comparator_2bit
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Adder/comparator_32bit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module comparator_32bit
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Adder/comparator_8bit.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module comparator_8bit
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/memory/counter64.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module counter64
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/decodeControl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module decodeControl
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/regfile-main/Logic/decoder32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module decoder32
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/regfile-main/regfile/dffe_ref.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module dffe_ref
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/div.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module div
+WARNING: [VRFC 10-3676] redeclaration of ansi port 'resultReady' is not allowed [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/div.v:11]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/divControl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module divControl
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/executeControl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module executeControl
+WARNING: [VRFC 10-3676] redeclaration of ansi port 'selectedB' is not allowed [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/executeControl.v:18]
+WARNING: [VRFC 10-3380] identifier 'immediate' is used before its declaration [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/executeControl.v:19]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/fetchControl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module fetchControl
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Adder/full_adder.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module full_adder
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/processor-main/logic/instructionType.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module instructionType
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/processor-main/hazard-logic/interlockDetector.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module interlockDetector
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/left_barrel_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module left_barrel_1
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/left_barrel_16.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module left_barrel_16
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/left_barrel_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module left_barrel_2
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/left_barrel_4.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module left_barrel_4
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/left_barrel_8.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module left_barrel_8
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/memoryControl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module memoryControl
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/mult.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mult
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/multControl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module multControl
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/multdiv.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module multdiv
+INFO: [VRFC 10-2458] undeclared symbol resetCounter, assumed default net type wire [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/multdiv.v:15]
+WARNING: [VRFC 10-2938] 'resetCounter' is already implicitly declared on line 15 [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/multdiv.v:38]
+WARNING: [VRFC 10-3380] identifier 'resetCounter' is used before its declaration [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/multdiv.v:14]
+WARNING: [VRFC 10-3380] identifier 'multReady' is used before its declaration [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/multdiv.v:40]
+WARNING: [VRFC 10-3380] identifier 'multResetCounter' is used before its declaration [C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/multdiv.v:41]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Logic/mux_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mux2_1
+INFO: [VRFC 10-311] analyzing module mux4_1
+INFO: [VRFC 10-311] analyzing module mux8_1
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Logic/mux_32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mux_2
+INFO: [VRFC 10-311] analyzing module mux_4
+INFO: [VRFC 10-311] analyzing module mux_8
+INFO: [VRFC 10-311] analyzing module mux_32
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Logic/not32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module not32
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Logic/or32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module or32
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module processor
+INFO: [VRFC 10-2458] undeclared symbol DX_InstOut, assumed default net type wire [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:72]
+INFO: [VRFC 10-2458] undeclared symbol XM_InstOut, assumed default net type wire [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:72]
+INFO: [VRFC 10-2458] undeclared symbol MW_InstOut, assumed default net type wire [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:72]
+INFO: [VRFC 10-2458] undeclared symbol XM_Bout, assumed default net type wire [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:72]
+INFO: [VRFC 10-2458] undeclared symbol DX_Aout, assumed default net type wire [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:72]
+INFO: [VRFC 10-2458] undeclared symbol DX_Bout, assumed default net type wire [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:72]
+INFO: [VRFC 10-2458] undeclared symbol XM_exceptionData, assumed default net type wire [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:72]
+INFO: [VRFC 10-2458] undeclared symbol MW_exceptionData, assumed default net type wire [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:72]
+INFO: [VRFC 10-2458] undeclared symbol fetch_FD_wren, assumed default net type wire [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:76]
+INFO: [VRFC 10-2458] undeclared symbol ctrl_branch, assumed default net type wire [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:76]
+WARNING: [VRFC 10-2938] 'fetch_FD_wren' is already implicitly declared on line 76 [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:80]
+WARNING: [VRFC 10-2938] 'DX_Aout' is already implicitly declared on line 72 [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:101]
+WARNING: [VRFC 10-2938] 'ctrl_branch' is already implicitly declared on line 76 [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:111]
+INFO: [VRFC 10-2458] undeclared symbol isMult, assumed default net type wire [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:112]
+INFO: [VRFC 10-2458] undeclared symbol isDiv, assumed default net type wire [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:112]
+WARNING: [VRFC 10-2938] 'isMult' is already implicitly declared on line 112 [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:115]
+WARNING: [VRFC 10-2938] 'XM_InstOut' is already implicitly declared on line 72 [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:128]
+WARNING: [VRFC 10-2938] 'MW_InstOut' is already implicitly declared on line 72 [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:139]
+WARNING: [VRFC 10-3380] identifier 'isMultDiv' is used before its declaration [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:68]
+WARNING: [VRFC 10-3380] identifier 'interlock' is used before its declaration [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/processor.v:81]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/productSelector.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module productSelector
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/regfile-main/regfile/regfile.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module regfile
+WARNING: [VRFC 10-3380] identifier 'registers' is used before its declaration [C:/Users/ayhon/ECE350/ece350-cpu/regfile-main/regfile/regfile.v:13]
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/memory/register1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module register1
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/regfile-main/regfile/register32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module register32
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/memory/register64.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module register64
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/memory/register65.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module register65
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/right_barrel_1.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module right_barrel_1
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/right_barrel_16.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module right_barrel_16
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/right_barrel_2.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module right_barrel_2
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/right_barrel_4.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module right_barrel_4
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/right_barrel_8.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module right_barrel_8
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/processor-main/logic/signExtension17to32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module signExtension17to32
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/processor-main/logic/signExtension27to32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module signExtension27to32
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/sll32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sll32
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/alu-main/Shifter/sra32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module sra32
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/memory/tffe_ref.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module tffe_ref
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/multdiv-main/multdiv/twosComp32.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module twosComp32
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/processor-main/processor/writebackControl.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module writebackControl
+INFO: [VRFC 10-2263] Analyzing Verilog file "C:/Users/ayhon/ECE350/ece350-cpu/processor-main/Wrapper_vivado_tb.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module Wrapper_tb
+WARNING: [VRFC 10-2096] empty statement in sequential block [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/Wrapper_vivado_tb.v:163]
+WARNING: [VRFC 10-3380] identifier 'reg_to_test' is used before its declaration [C:/Users/ayhon/ECE350/ece350-cpu/processor-main/Wrapper_vivado_tb.v:63]

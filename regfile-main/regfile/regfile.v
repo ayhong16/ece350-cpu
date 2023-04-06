@@ -2,14 +2,22 @@ module regfile (
 	clock,
 	ctrl_writeEnable, ctrl_reset, ctrl_writeReg,
 	ctrl_readRegA, ctrl_readRegB, data_writeReg,
-	data_readRegA, data_readRegB
+	data_readRegA, data_readRegB, reg1, reg2, reg3, reg4, reg5, reg6, reg7, reg8, reg9
 );
 
 	input clock, ctrl_writeEnable, ctrl_reset;
 	input [4:0] ctrl_writeReg, ctrl_readRegA, ctrl_readRegB;
 	input [31:0] data_writeReg;
 
-	output [31:0] data_readRegA, data_readRegB;
+	output [31:0] data_readRegA, data_readRegB, reg1, reg2, reg3, reg4, reg5, reg6, reg7, reg8, reg9;
+	assign reg2 = registers[2];
+	assign reg3 = registers[3];
+	assign reg4 = registers[4];
+	assign reg5 = registers[5];
+	assign reg6 = registers[6];
+	assign reg7 = registers[7];
+	assign reg8 = registers[8];
+	assign reg9 = registers[9];
 
 	// Set up write wire to each register
 	wire [31:0] writeDecode, writePortAnd;
@@ -28,7 +36,7 @@ module regfile (
 	decoder32 readB(readRegisterB, ctrl_readRegB, 1'b1);
 
 	// Connect each register
-	wire [31:0][31:0] registers;
+	wire [31:0] registers[31:0];
 
 	register32 set_reg0(registers[0], data_writeReg, clock, 1'b0, ctrl_reset);
 	buffer32 buffer0A(data_readRegA, 32'b0, readRegisterA[0]);
